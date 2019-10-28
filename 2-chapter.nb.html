@@ -2023,12 +2023,216 @@ print(class(1L))</code></pre>
 <p>想了解具体的转换规则，可以看看下面的链接哦。 <a href="https://baike.baidu.com/item/%E5%85%AB%E8%BF%9B%E5%88%B6">以八进制为例，实施进制转换</a></p>
 <hr />
 <p>到此，我们就可以先歇一歇，再回头看看 <strong>向量、矢量</strong>这里面都包含了哪些内容。后面讲解其他的数据类型的时候，还会用得到它们呢。</p>
+</div>
+</div>
+<div id="列表矩阵数组" class="section level4">
+<h4>列表、矩阵、数组</h4>
+<p>这三个有相似之处，所以放到一块来看。最直观的来看： - 列表是一维的，参考一个只有x轴的坐标系 - 矩阵是二维的，参考一个x-y形式的坐标系 - 数组是N维的（N可以是1、2、3，甚至是大于3的整数），数组是不是就不难理解啦，如果N=1，那它就是个列表； 如果N=2，那它就是个矩阵； 如果N=3，那就是个x-y-z形式的空间坐标系呀，如果N&gt;3呢，我没找到合适的比喻，哈哈哈，你可以自由发挥下（比如，撇开一个维度不去管它，那4维的就变成了3维，又变成了一个x-y-z形式的空间坐标系了不是）</p>
+<p>单单是用文字来表述，总归是不够正式，咱们还是用代码来瞅瞅。</p>
+<ul>
+<li>先来看看“列表”</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDliJvlu7rkuIDkuKrliJfooahcbmxpc3QxIDwtIGxpc3QoMSwgMi4zNCwgNSs2aSwgXCJBQkNcIiwgc2luKVxuIyDmiZPljbDliJfooajnmoTlgLxcbnByaW50KGxpc3QxKVxuYGBgIn0= -->
+<pre class="r"><code># 创建一个列表
+list1 &lt;- list(1, 2.34, 5+6i, &quot;ABC&quot;, sin)
+# 打印列表的值
+print(list1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiW1sxXV1cblsxXSAxXG5cbltbMl1dXG5bMV0gMi4zNFxuXG5bWzNdXVxuWzFdIDUrNmlcblxuW1s0XV1cblsxXSBcIkFCQ1wiXG5cbltbNV1dXG5mdW5jdGlvbiAoeCkgIC5QcmltaXRpdmUoXCJzaW5cIilcbiJ9 -->
+<pre><code>[[1]]
+[1] 1
+
+[[2]]
+[1] 2.34
+
+[[3]]
+[1] 5+6i
+
+[[4]]
+[1] &quot;ABC&quot;
+
+[[5]]
+function (x)  .Primitive(&quot;sin&quot;)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>列表的创建使用的关键字是<code>list()</code>,可以看到列表中的元素，数据类型很丰富，有咱们上面讲的数值型，整数型，字符型，甚至还有“函数（函数的内容后续章节会讲到的哈，先不用管它）”</p>
+<ul>
+<li>看看“矩阵”</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTSA9IG1hdHJpeCggYygnYScsJ2EnLCdiJywnYycsJ2InLCdhJyksIG5yb3cgPSAyLCBuY29sID0gMywgYnlyb3cgPSBUUlVFKVxucHJpbnQoTSlcbmBgYCJ9 -->
+<pre class="r"><code>M = matrix( c('a','a','b','c','b','a'), nrow = 2, ncol = 3, byrow = TRUE)
+print(M)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXVxuWzEsXSBcImFcIiAgXCJhXCIgIFwiYlwiIFxuWzIsXSBcImNcIiAgXCJiXCIgIFwiYVwiIFxuIn0= -->
+<pre><code>     [,1] [,2] [,3]
+[1,] &quot;a&quot;  &quot;a&quot;  &quot;b&quot; 
+[2,] &quot;c&quot;  &quot;b&quot;  &quot;a&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>矩阵的创建用到的关键字是<code>matrix()</code>, 是不是很形象的输出结果。代码里面用到了<code>c('a', 'a', 'b', 'c', 'b', 'a')</code> 和 <code>nrow=2</code> 和 <code>ncol=3</code> 以及 <code>byrow=TRUE</code>。他们分别是什么意思呢？</p>
+<p><code>c('a', 'a', 'b', 'c', 'b', 'a')</code> 意思是创建6个“基本数据类型”为字符数据类型的变量 <code>nrow=2</code> 即number of row 设置行数为2 <code>ncol=3</code> 即number of column 设置列数为3 <code>byrow=TRUE</code> 按照行来排列</p>
+<p>接下来我们改变下参数的值，看看输出会不会有什么不同的。</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTSA9IG1hdHJpeCggYygnYScsJ2EnLCdiJywnYycsJ2InLCdhJyksIG5yb3cgPSAzLCBuY29sID0gMiwgYnlyb3cgPSBUUlVFKVxucHJpbnQoTSlcbmBgYCJ9 -->
+<pre class="r"><code>M = matrix( c('a','a','b','c','b','a'), nrow = 3, ncol = 2, byrow = TRUE)
+print(M)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gXCJhXCIgIFwiYVwiIFxuWzIsXSBcImJcIiAgXCJjXCIgXG5bMyxdIFwiYlwiICBcImFcIiBcbiJ9 -->
+<pre><code>     [,1] [,2]
+[1,] &quot;a&quot;  &quot;a&quot; 
+[2,] &quot;b&quot;  &quot;c&quot; 
+[3,] &quot;b&quot;  &quot;a&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>我们改变了<code>nrow=3</code> 和 <code>ncol=2</code> 然后矩阵就变成了3行2列</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTSA9IG1hdHJpeCggYygnYScsJ2EnLCdiJywnYycsJ2InLCdhJyksIG5yb3cgPSAyLCBuY29sID0gMywgYnlyb3cgPSBGQUxTRSlcbnByaW50KE0pXG5gYGAifQ== -->
+<pre class="r"><code>M = matrix( c('a','a','b','c','b','a'), nrow = 2, ncol = 3, byrow = FALSE)
+print(M)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXVxuWzEsXSBcImFcIiAgXCJiXCIgIFwiYlwiIFxuWzIsXSBcImFcIiAgXCJjXCIgIFwiYVwiIFxuIn0= -->
+<pre><code>     [,1] [,2] [,3]
+[1,] &quot;a&quot;  &quot;b&quot;  &quot;b&quot; 
+[2,] &quot;a&quot;  &quot;c&quot;  &quot;a&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>观察输出结果，与第一个对比我们就改变了第四个参数<code>byrow=FALSE</code>然后，这6个数值就变成了按列优先的方式进行了排列。</p>
+<p>因此不难发现，这几个参数分别起到了什么作用了吧。</p>
+<ul>
+<li>看看“数组”</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBhcnJheShjKCdncmVlbicsJ3llbGxvdycpLGRpbSA9IGMoMywzLDIpKVxucHJpbnQoYSlcbmBgYCJ9 -->
+<pre class="r"><code>a &lt;- array(c('green','yellow'),dim = c(3,3,2))
+print(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiLCAsIDFcblxuICAgICBbLDFdICAgICBbLDJdICAgICBbLDNdICAgIFxuWzEsXSBcImdyZWVuXCIgIFwieWVsbG93XCIgXCJncmVlblwiIFxuWzIsXSBcInllbGxvd1wiIFwiZ3JlZW5cIiAgXCJ5ZWxsb3dcIlxuWzMsXSBcImdyZWVuXCIgIFwieWVsbG93XCIgXCJncmVlblwiIFxuXG4sICwgMlxuXG4gICAgIFssMV0gICAgIFssMl0gICAgIFssM10gICAgXG5bMSxdIFwieWVsbG93XCIgXCJncmVlblwiICBcInllbGxvd1wiXG5bMixdIFwiZ3JlZW5cIiAgXCJ5ZWxsb3dcIiBcImdyZWVuXCIgXG5bMyxdIFwieWVsbG93XCIgXCJncmVlblwiICBcInllbGxvd1wiXG4ifQ== -->
+<pre><code>, , 1
+
+     [,1]     [,2]     [,3]    
+[1,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; 
+[2,] &quot;yellow&quot; &quot;green&quot;  &quot;yellow&quot;
+[3,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; 
+
+, , 2
+
+     [,1]     [,2]     [,3]    
+[1,] &quot;yellow&quot; &quot;green&quot;  &quot;yellow&quot;
+[2,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; 
+[3,] &quot;yellow&quot; &quot;green&quot;  &quot;yellow&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>创建数组的关键字是<code>array()</code>，然后使用参数<code>dim= c(3, 3, 2)</code> 创建了一个拥有两个块，每个块儿内部分别是一个3X3的矩阵。那我们改变下参数，看看会有什么不一样的吧。</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBhcnJheShjKCdncmVlbicsJ3llbGxvdycpLGRpbSA9IGMoMywzLDEpKVxucHJpbnQoYSlcbmBgYCJ9 -->
+<pre class="r"><code>a &lt;- array(c('green','yellow'),dim = c(3,3,1))
+print(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiLCAsIDFcblxuICAgICBbLDFdICAgICBbLDJdICAgICBbLDNdICAgIFxuWzEsXSBcImdyZWVuXCIgIFwieWVsbG93XCIgXCJncmVlblwiIFxuWzIsXSBcInllbGxvd1wiIFwiZ3JlZW5cIiAgXCJ5ZWxsb3dcIlxuWzMsXSBcImdyZWVuXCIgIFwieWVsbG93XCIgXCJncmVlblwiIFxuIn0= -->
+<pre><code>, , 1
+
+     [,1]     [,2]     [,3]    
+[1,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; 
+[2,] &quot;yellow&quot; &quot;green&quot;  &quot;yellow&quot;
+[3,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBhcnJheShjKCdncmVlbicsJ3llbGxvdycpLGRpbSA9IGMoMywzLDMpKVxucHJpbnQoYSlcbmBgYCJ9 -->
+<pre class="r"><code>a &lt;- array(c('green','yellow'),dim = c(3,3,3))
+print(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiLCAsIDFcblxuICAgICBbLDFdICAgICBbLDJdICAgICBbLDNdICAgIFxuWzEsXSBcImdyZWVuXCIgIFwieWVsbG93XCIgXCJncmVlblwiIFxuWzIsXSBcInllbGxvd1wiIFwiZ3JlZW5cIiAgXCJ5ZWxsb3dcIlxuWzMsXSBcImdyZWVuXCIgIFwieWVsbG93XCIgXCJncmVlblwiIFxuXG4sICwgMlxuXG4gICAgIFssMV0gICAgIFssMl0gICAgIFssM10gICAgXG5bMSxdIFwieWVsbG93XCIgXCJncmVlblwiICBcInllbGxvd1wiXG5bMixdIFwiZ3JlZW5cIiAgXCJ5ZWxsb3dcIiBcImdyZWVuXCIgXG5bMyxdIFwieWVsbG93XCIgXCJncmVlblwiICBcInllbGxvd1wiXG5cbiwgLCAzXG5cbiAgICAgWywxXSAgICAgWywyXSAgICAgWywzXSAgICBcblsxLF0gXCJncmVlblwiICBcInllbGxvd1wiIFwiZ3JlZW5cIiBcblsyLF0gXCJ5ZWxsb3dcIiBcImdyZWVuXCIgIFwieWVsbG93XCJcblszLF0gXCJncmVlblwiICBcInllbGxvd1wiIFwiZ3JlZW5cIiBcbiJ9 -->
+<pre><code>, , 1
+
+     [,1]     [,2]     [,3]    
+[1,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; 
+[2,] &quot;yellow&quot; &quot;green&quot;  &quot;yellow&quot;
+[3,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; 
+
+, , 2
+
+     [,1]     [,2]     [,3]    
+[1,] &quot;yellow&quot; &quot;green&quot;  &quot;yellow&quot;
+[2,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; 
+[3,] &quot;yellow&quot; &quot;green&quot;  &quot;yellow&quot;
+
+, , 3
+
+     [,1]     [,2]     [,3]    
+[1,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; 
+[2,] &quot;yellow&quot; &quot;green&quot;  &quot;yellow&quot;
+[3,] &quot;green&quot;  &quot;yellow&quot; &quot;green&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBhcnJheShjKCdncmVlbicsJ3llbGxvdycpLGRpbSA9IGMoMiwzLDIpKVxucHJpbnQoYSlcbmBgYCJ9 -->
+<pre class="r"><code>a &lt;- array(c('green','yellow'),dim = c(2,3,2))
+print(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiLCAsIDFcblxuICAgICBbLDFdICAgICBbLDJdICAgICBbLDNdICAgIFxuWzEsXSBcImdyZWVuXCIgIFwiZ3JlZW5cIiAgXCJncmVlblwiIFxuWzIsXSBcInllbGxvd1wiIFwieWVsbG93XCIgXCJ5ZWxsb3dcIlxuXG4sICwgMlxuXG4gICAgIFssMV0gICAgIFssMl0gICAgIFssM10gICAgXG5bMSxdIFwiZ3JlZW5cIiAgXCJncmVlblwiICBcImdyZWVuXCIgXG5bMixdIFwieWVsbG93XCIgXCJ5ZWxsb3dcIiBcInllbGxvd1wiXG4ifQ== -->
+<pre><code>, , 1
+
+     [,1]     [,2]     [,3]    
+[1,] &quot;green&quot;  &quot;green&quot;  &quot;green&quot; 
+[2,] &quot;yellow&quot; &quot;yellow&quot; &quot;yellow&quot;
+
+, , 2
+
+     [,1]     [,2]     [,3]    
+[1,] &quot;green&quot;  &quot;green&quot;  &quot;green&quot; 
+[2,] &quot;yellow&quot; &quot;yellow&quot; &quot;yellow&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSBhcnJheShjKCdncmVlbicsJ3llbGxvdycpLGRpbSA9IGMoMywyLDIpKVxucHJpbnQoYSlcbmBgYCJ9 -->
+<pre class="r"><code>a &lt;- array(c('green','yellow'),dim = c(3,2,2))
+print(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiLCAsIDFcblxuICAgICBbLDFdICAgICBbLDJdICAgIFxuWzEsXSBcImdyZWVuXCIgIFwieWVsbG93XCJcblsyLF0gXCJ5ZWxsb3dcIiBcImdyZWVuXCIgXG5bMyxdIFwiZ3JlZW5cIiAgXCJ5ZWxsb3dcIlxuXG4sICwgMlxuXG4gICAgIFssMV0gICAgIFssMl0gICAgXG5bMSxdIFwiZ3JlZW5cIiAgXCJ5ZWxsb3dcIlxuWzIsXSBcInllbGxvd1wiIFwiZ3JlZW5cIiBcblszLF0gXCJncmVlblwiICBcInllbGxvd1wiXG4ifQ== -->
+<pre><code>, , 1
+
+     [,1]     [,2]    
+[1,] &quot;green&quot;  &quot;yellow&quot;
+[2,] &quot;yellow&quot; &quot;green&quot; 
+[3,] &quot;green&quot;  &quot;yellow&quot;
+
+, , 2
+
+     [,1]     [,2]    
+[1,] &quot;green&quot;  &quot;yellow&quot;
+[2,] &quot;yellow&quot; &quot;green&quot; 
+[3,] &quot;green&quot;  &quot;yellow&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>是不是发现了什么规律呢？</p>
+<p><code>dim</code>意思是<code>dimension</code> 维度的意思。<code>dim = c (nrow, ncol, number)</code>分别代表了要生成多少个个几行几列的矩阵。</p>
+<p>知道了这些有什么用呢？不要着急，暂时确实没什么用，但今后这些东西都是基础，咱们还是得来了解下。</p>
 <!-- rnb-text-end -->
 </div>
 </div>
-</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAi5Z+656GA5pWw5o2u57G75Z6L5ZKM6K+t5rOVIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyMg6K+t5rOVCuivtOWIsOivreazle+8jOS9oOaDs+WIsOS6huS7gOS5iO+8n+iLseivremHjOmdoueahOWbuuWumuihqOi+vuWvueWQp++8jOaYr+eahO+8jOWcqOe8lueoi+ivreiogOS4re+8jOS5n+aciei/meS5iOS4gOWll+e6puWumuS/l+aIkOeahOinhOWumuOAggoK5a+55q+P5LiA6Zeo57yW56iL6K+t6KiA5p2l6K+077yM56ys5LiA5qyh6KKr5omn6KGM55qE6YCa5bi45piv57uP5YW455qEICoqaGVsbG8gd29ybGQqKiDnqIvluo/vvIzlnKhS6K+t6KiA5Lit77yM5oiR5Lus5Lmf5LiN6IO95YWN5L+X77yM5q+U5aaC5LiL6Z2i55qE5Luj56CB5bCx5piv5LiA5Liq5pyA566A5Y2V55qEUueoi+W6j+OAggpgYGB7cn0KcHJpbnQoImhlbGxvIHdvcmxkLiIpCmBgYAoK5aaC5q2k77yM5oiR5Lus5bCx5a2m5Lya5LqG5pyA566A5Y2V55qEUuivreiogOe8lueoi+WVpuOAggoK6YCa5bi45p2l6K6y77yM5Zyo5pel5bi455qE57yW56iL6L+H56iL5Lit77yM5oiR5Lus5LiN5Lya566A566A5Y2V5Y2V55qE5bCx5YaZ6L+Z5LmI5LiA6KGM5Luj56CB5a+55ZCn44CC5bCx5YOP5piv5YaZ5L2c5paH77yM5LiA5Y+l5Lik5Y+l5aSn5a626YO95rKh5LuA5LmI6Zeu6aKY77yM5L2G5piv6ZW/56+H57Sv54mN55qE5paH56ug77yM6K6p5Yir5Lq655yL6LW35p2l6L+Y5piv5b6I6LS55Yqy55qE77yM5Zug5q2k5oiR5Lus5bCx6ZyA6KaBICoq5rOo6YeKKirov5nkuYjkuKrkuJzopb/vvIzms6jph4rnmoTkvZznlKjlsLHnm7jlvZPkuo7lr7nnvJbnqIvor63oqIDnmoTnv7vor5HjgILlroPkuI3kvJrooqtS6K+t6KiA55qE5byV5pOO6Kej6YeK77yM5Y+q5piv5biu5Yqp5Yir5Lq655yL5Luj56CB55qE5pe25YCZ55CG6Kej56iL5bqP5piv5bmy5LuA5LmI55qE44CCCgotIOWNleihjOazqOmHigrlnKhS6K+t6KiA5Lit77yM5rOo6YeK5Lmf5pyJ5a6D5Zu65a6a55qE5qC85byPLOmCo+WwseaYrwo+ICMg6L+Z6YeM5piv5rOo6YeK5YaF5a65CgrkuZ/lsLHmmK/or7TvvIzku6UgYCNgIOWtl+espuW8gOWktOeahOihjO+8jOWwseaYr+azqOmHiuihjOOAguWug+WQjumdoueahOWGheWuuemDveS4jeS8muiiq+aJp+ihjOOAggoKLSDlpJrooYzms6jph4oK5pyJ5Lqb5pe25YCZ77yM5YaZ55qE5rOo6YeK5LiA6KGM6KGo6L+w5LiN5LqG5oiR5Lus55qE5oSP5Zu+77yM5oiR5Lus5Y+v5Lul6L+Z5LmI5YaZCmBgYHtyfQojIOesrOS4gOihjOazqOmHigojIOesrOS6jOihjOazqOmHigpgYGAKCuS4gOS4pOihjO+8jOS4pOS4ieihjOeahOazqOmHiuW+iOW4uOinge+8jOS9huaAu+S8muaciemcgOimgeWGmeWlveWkmuihjOeahOazqOmHiu+8jOi/meagt+avj+ihjOS4gOS4qiBgI2DlrZfnrKbvvIzlsLHmmL7lvpflvojnuYHnkJDjgILlpoLmnpzmiJHku6zlgY/lgY/opoHlhpnlvojlpJrooYznmoTms6jph4rvvIzmnInmsqHmnInmm7Tlpb3nmoTlhpnms5XlkaLvvJ/nrZTmoYjmmK/mnInnmoTvvIzlj6rkuI3ov4fkuI3mmK/lvojlpb3nnIvnvaLkuobvvIzlpoLkuIvvvJoKYGBge3J9CmlmKEZBTFNFKSB7CiAgIuesrOS4gOihjOazqOmHigogIOesrOS6jOihjOazqOmHigogIOesrOS4ieihjOazqOmHigogIOesrOWbm+ihjOazqOmHigogIOOAguOAguOAggogIOesrE7ooYzms6jph4oiCn0KYGBgCuS7juWtl+mdouaEj+aAneS4iuadpeeci++8muWmguaenOaYr0ZBTFNF77yM6YKj5LmI5omn6KGM6Iqx5ous5Y+36YeM6Z2i55qE5Luj56CB77yM6L+Z5Liq5Yik5pat5p2h5Lu25piv5rC46L+c5Lmf5LiN5oiQ56uL55qE77yM5Lmf5bCx5piv6Iqx5ous5Y+36YeM6Z2i55qE5Luj56CB5rC46L+c5Lmf5LiN5Lya5b6X5Yiw5omn6KGM77yM6L+Z5Lmf5bCx6L6+5Yiw5LqG5oiR5Lus55qE55uu55qE77yM5a6e546w5LqG5Lmm5YaZ5aSa6KGM5rOo6YeK55qE6ZyA5rGC44CCCgoKIyMjIOWfuuacrOaVsOaNruexu+WeiwrlvZPmj5DliLDnqIvluo/vvIzkvaDnmoTnrKzkuIDljbDosaHmmK/ku4DkuYjvvJ/mmK/kuI3mmK/kuIDmrrXku6PnoIHlnKjnnLzliY3po5jov4fvvIznhLblkI7oirHph4zog6Hlk6jnmoTvvIzkuI3mmI7miYDku6XnmoTlsLHlh7rnjrDkuoborqnkurrpnIfmg4rnmoTnu5PmnpzjgIIKCuWlveavlOaYr+e7meS6uueci+eXhe+8jOS9nOS4uuWMu+eUn+mmluWFiOimgeefpemBk+i/meWRs+iNr+eahOWKn+aViOaYr+S7gOS5iO+8jOiDveWkn+ayu+eWl+S7gOS5iOeXheeXh++8jOmCo+WRs+iNr+eahOWKn+aViOaYr+S7gOS5iO+8jOiDveWkn+ayu+eWl+S7gOS5iOeXheeXh+OAguiAjOWcqOe8lueoi+ivreiogOeahOS4lueVjOmHjO+8jOaVsOaNruexu+Wei+WwseaYr+i/meagt+eahOS4gOWRs+WRs+iNr++8jOaYr+aIkeS7rOebluaIv+WtkOaXtumcgOimgeeahOWfuuefs+OAggoKUuivreiogOaYr+S4gOmXqOiEmuacrOivreiogO+8jOaIluiAheivtOaYr+WKqOaAgeivreiogOOAguaYr+WQrOi1t+adpeaYr+S4jeaYr+S4gOWktOmbvuawtO+8jOi/memDveS7gOS5iOi3n+S7gOS5iOWRgOOAguS7gOS5iOaYr+WKqOaAgeivreiogO+8n+WPr+S7pemAmuS/l+eahOeQhuino+S4uu+8mgoKPiDlj5jph4/nmoTnsbvlnovlkozlgLzlj6/ku6XlnKjnqIvluo/miafooYznmoTov4fnqIvkuK3ooqvkv67mlLnjgIIKCui/mOaYr+S4jeWkn+ebtOeZve+8jOS4vuS4qvCfjLAgCgrmiJHnn6XkuY7kuIrlj6vigJzolpvlrprosJTnmoTwn5C24oCd77yM6L+H5q615pe26Ze05oiR5Y+v5Lul5Y+r4oCc6Jab5a6a6LCU55qE8J+QseKAne+8jOWGjei/h+auteaXtumXtOaIkeWPr+S7peWPq+KAnOiWm+WumuiwlOeahPCfkILigJ3nrYnnrYnvvIzmiJHlj6/ku6XkuIDnm7TmjaLjgILov5nlsLHlpb3mr5TmmK/lnKjigJzmiafooYzigJ3nmoTov4fnqIvkuK3liqjmgIHlnLDkv67mlLnkuoblj5jph4/vvIjkuZ/lsLHmmK/miJHov5nkuKrotKblj7fvvInnmoTigJzlgLzigJ3vvIjlkI3lrZfvvInvvJvnm7jlkIznmoTlnLrmma/vvIzmiJHmsqHlip7ms5Xkv67mlLnlvq7kv6Hlj7fvvIjkuI3mmK/lvq7kv6HmmLXnp7Dlk4jvvInvvIzkuIDml6bmiJHlvIDlp4vnmoTml7blgJnnlLPor7fkuoblvq7kv6Hlj7fvvIzku6XlkI7lsLHpg73mlLnkuI3kuobkuobjgIIKCuexu+avlOaAneiAg+WQjuaYr+S4jeaYr+inieW+l+aciemCo+S5iOS4gOeCueeQhuino+S6hu+8jOeOsOmYtuauteS4jeeQhuino+S5n+ayoeWFs+ezu+OAgueuoeS7lumdmeaAgeivreiogOi/mOaYr+WKqOaAgeivreiogO+8jOiDveato+ehrui/kOihjOWwseWujOS6i+OAggoKCuWlveeahO+8jOaOpeS4i+adpeeci+eci+mDveacieWTquWHoOWRs+iNr+WQp+OAguWTpu+8jOS4jeWvue+8jOaYr+WTquS6m+S4quaVsOaNruexu+Wei+WQp+OAggoK57G75Z6L5ZCN56ewIHwg6Kej6YeKCi0tLSB8IC0tLQrlkJHph4/jgIHnn6Lph48gfCDmnIDln7rnoYDnmoTmlbDmja7nsbvlnovvvIzlhbbku5bmlbDmja7nsbvlnovpg73lu7rnq4vlnKjlroPkuYvkuIrjgIIK5YiX6KGoIHwg5YiX6KGo57G75Z6LCuefqemYtSB8IOefqemYteexu+WeiwrmlbDnu4QgfCDmlbDnu4TnsbvlnosK5Zug5a2QIHwg5Zug5a2Q57G75Z6LCuaVsOaNruW4pyB8IOaVsOaNruW4pwoKCgrkuIDkuIvlrZDlpJrkuoblpb3lpJrnsbvlnovvvIzmjaLosIHpg73kvJrmmK/kuIDlpLTpm77msLTjgILkvYbmmK/ov5nkupvlj4jmmK/ln7rnoYDnmoTlhoXlrrnvvIzkuI3lrabmmK/kuI3ooYznmoTvvIzov5nml7blgJnlsLHkuI3opoHov73msYLpgJ/luqbllabvvIzlkrHmhaLngrnmnaUs5LiA5Liq5LiA5Liq5Zyw5p2l44CCCgoKIyMjIyDlkJHph4/jgIHnn6Lph4/nsbvlnosK6Jm954S25piv5pyA5pyA5Z+656GA55qE5pWw5o2u57G75Z6L77yM5L2G5a6D55qE5YaF5a655Y+v55yf5LiN5bCR44CC5YyF5ous5biD5bCU57G75Z6LKExvZ2ljYWwp44CB5pWw5YC857G75Z6LKG51bWJlcmljKeOAgeaVtOaVsOexu+WeiyhpbnRlZ2VyKeOAgeWkjeaVsOexu+Weiyhjb21wbGV4KeOAgeWtl+espuexu+WeiyhjaGFyYWN0ZXIp5ZKM5Y6f5aeL57G75Z6LKHJhdynjgILkuIvpnaLkuIDkuKrkuKrlnLDmnaXlrp7lnLDmtYvor5XkuIDkuIvjgIIKCiMjIyMjIOW4g+WwlOexu+WeiwrluIPlsJTnsbvlnovvvIzlsLHmmK/miJHku6zluLjor7TnmoTvvJog55yf44CB5YGH5a+55bqU5Lik5Liq5Zu65a6a55qE5YC8IFRSVUXjgIEgRkFMU0UKYGBge3J9CnByaW50KFRSVUUpCnByaW50KEZBTFNFKQpgYGAKCuWbnumhvuS4i+S4iumdouiusioq6K+t5rOVKirpg6jliIbnmoTml7blgJnvvIzmiJHku6zlgJ/liqlGQUxTReWunueOsOS6huWkmuihjOazqOmHiu+8jOWwseaYr+WboOS4ukZBTFNF55qE5Yik5pat5p2h5Lu25rC46L+c5Lmf5LiN5oiQ56uL77yM6Iqx5ous5Y+36YeM6Z2i55qE5Luj56CB5rC46L+c5Lmf5LiN5Lya5b6X5Yiw5omn6KGM44CCCgojIyMjIyDmlbDlgLznsbvlnosK5o+Q5Yiw5pWw5YC857G75Z6L77yM5LuO5oiR5Lus5aSa5bm05a+555Sf5rS755qE5L2T6aqM77yM5oiR5Lus5Y+v6IO95Lya5oOz5Yiw6L+Z5LmI5Yeg56eN77yaCgotIDHjgIEy44CBM+OAgTTjgIE144CBNuOAgTfjgIE444CBOeOAgTAKLSAxLjLjgIEyLjM044CBMy41NjcKCuivtOWvueS6hu+8jOaVsOWAvOexu+Wei+WwseaYr+i/meagt+eahOOAggpgYGB7cn0KcHJpbnQoMSkKcHJpbnQoMi4yKQpwcmludCgzLjQ1KQpgYGAKCgojIyMjIyDmlbTmlbDnsbvlnosK5ZKM5pWw5YC857G75Z6L55u45Ly877yM5L2G5piv5aSa5LqG5LiA5Liq54m554K577yM6YKj5bCx5piv5pWw5a2X5ZCO6Z2iIOi/mOmZhOW4puS6huS4gOS4queJueauiueahOWtl+espmBMYCzmr5TlpoIKMUwgIDNMICAgNUwgICA3TOetieetieOAggoK6YKj5LmI5L2g5Y+v6IO95Lya5pyJ55aR6Zeu77yM6L+Z5Liq5pW05pWw57G75Z6L5piv5LiN5piv5ZKM5LiK6Z2i55qE5pWw5YC857G75Z6L5pyJ6KaG55uW5ZGi77yf5q+U5aaC5pWw5YC857G75Z6L6YeM5Lmf5pyJMeWSjDPjgILlroPlkozmlbTmlbDnsbvlnovph4znmoQx5ZKMM+acieS7gOS5iOWMuuWIq+WRou+8nwoKR29vZCBxdWVzdGlvbuOAguaMieaIkeeahOeQhuino++8jOWcqOi/meS4queJueauiueahOWcuuaZr+S4i++8jOi/meS/qeayoeS7gOS5iOWkp+eahOWMuuWIq++8jOaXoOmdnuaYr+exu+Wei+S4iueojeacieS4jeWQjOOAguaVsOWAvOexu+Wei+ihqOekuueahOiMg+WbtOabtOW5v++8jOacieWwj+aVsO+8jOS5n+acieaVtOaVsO+8jOiAjOaVtOaVsOexu+Wei+iDveWkn+ihqOekuueahOWwseWPquacieaVtOaVsOOAggoK5Zyo5Luj56CB5Lit77yM5oiR5Lus5Y+v5Lul6YCa6L+HIGBjbGFzcygpYCDmlrnms5XvvIzmnaXliKTmlq3kuIDkuKrlj5jph4/liLDlupXmmK/ku4DkuYjnsbvlnovjgIIKYGBge3J9CiMg5pWw5YC857G75Z6LCnByaW50KGNsYXNzKDEpKQpwcmludChjbGFzcygxLjIzKSkKCiMg5pW05pWw57G75Z6LCnByaW50KGNsYXNzKDFMKSkKYGBgCgrliJ3mrKHkuYvlpJbvvIzmiJHku6zmmoLkuJTlj6/ku6XkuI3nlKjogIPomZHov5nkv6nnsbvlnovliLDlupXmnInku4DkuYjljLrliKvllabjgIIKCiMjIyMjIOWkjeaVsOexu+WeiwrkuI3nn6XpgZPkvaDov5jorrDkuI3orrDlvpfvvIxb6auY5Lit5pWw5a2m6YeM55qE5aSN5pWwXShodHRwczovL2JhaWtlLmJhaWR1LmNvbS9pdGVtLyVFNSVBNCU4RCVFNiU5NSVCMC8yNTQzNjU/ZnI9YWxhZGRpbiksIFLor63oqIDkuK3nmoTlpI3mlbDlkozlroPmmK/kuIDoh7TnmoTjgIIKCj4gQSA9IEIgKyBDaQo+IEIg5Li65a6e5pWw6YOo5YiG77yMIEPkuLromZrmlbDpg6jliIYKPiBpIOaYrzFpCj4gaSppIOS4ujBpCgpgYGB7cn0KcHJpbnQoKDErMWkpKigxLTFpKSkKcHJpbnQoKDErMWkpKigxKzFpKSkKYGBgCgrlnKjmlbDlrabov5DnrpfkuK3vvIzlpI3mlbDmmK/kuIDkuKrlvojph43opoHnmoTmpoLlv7XvvIzkvYblr7nkuo7njrDlnKjnmoTmiJHku6zvvIzkuobop6PkuIvmnInov5nkuYjkuKrmlbDmja7nsbvlnovlsLHlpJ/kuobvvIzlkI7pnaLnrYnnlKjliLDnmoTml7blgJnvvIzlkrHku6zlho3ov5vooYzorqjorrrjgIIKCgojIyMjIyDlrZfnrKbnsbvlnosKCuWcqFLor63oqIDkuK3vvIzmiJHku6zkvJrlvojpopHnuYHnmoTkvb/nlKjliLDov5nkuKrmlbDmja7nsbvlnovjgILmoLzlvI/kuLroi7HmlofnmoTljZXlvJXlj7fmiJbogIXoi7HmlofnmoTlj4zlvJXlj7cg5YyF6KO56LW35p2l55qE5YaF5a6577yM5q+U5aaC77yaCmBgYHtyfQonYScKJ2FiYycKIkEiCiJIZWxsbyAgIHdvcmxkIgoiVFJVRSIKYGBgCgror7jlpoLmraTnsbvvvIzpg73mmK/lrZfnrKbnsbvlnovjgILlho3mrKHlm57pob7kuIvliJrmiY3orrIg4oCc5aSa6KGM5rOo6YeK4oCdIOeahOaXtuWAme+8jOiKseaLrOWPt+aLrOi1t+adpeeahOmCo+WlveWHoOihjOeahOWGheWuue+8jOato+WlveaYr+aIkeS7rOeOsOWcqOeci+WIsOeahOKAnOWtl+espuexu+Wei+KAneeahOWAvOOAggoKCiMjIyMjIOWOn+Wni+exu+Weiwrmg7PkuIDmg7PvvIzkvaDop4nlvpfku4DkuYjmmK/ljp/lp4vnsbvlnovvvJ8KCuWcqOeoi+W6j+eahOS4lueVjOS4re+8jOS7o+eggeecn+ato+i/kOihjOeahOaXtuWAme+8jOmDveS8muiiq+iuoeeul+acuue/u+ivkeaIkDDlkowx77yM5Lmf5bCx5piv6K+05oiR5Lus55yL5Yiw55qE6L+Z5LiA6KGM6KGM55qE5Luj56CB77yM6YCa6L+HUuivreiogOW8leaTju+8iOWPkeWKqOacuu+8ieWcqOWunumZheS4iuiiq+i/kOihjOeahOaXtuWAmemDveS8muiiq+e8lueggeaIkOiuoeeul+acuuivhuWIq+eahOWGheWuue+8jOWPmOaIkOS4gOS4suS6jOi/m+WItueahOaVsOaNrua1geOAggoK5Li+5Liq5L6L5a2Q77yM5oiR5Lus55yL5Yiw55qE4oCcaGVsbG/igJ3ov5nkupTkuKrljZXor43vvIznlKjljp/lp4vnsbvlnovooajnpLrlsLHlj5jmiJDkuoYKYGBge3J9CiMgNDggNjUgNmMgNmMgNmYKYGBgCgrkvaDlj6/og73kvJrlpb3lpYfvvIzkuLrku4DkuYho5Y+Y5oiQ5LqGNDjlkaLvvJ/nqbbnq5/mmK/mgI7kuYjlj5jnmoTlkaLvvJ/lnKjop6Pph4rkuYvliY3vvIzmiJHku6zlhYjmnaXnnIvkuIvkuIDkuKrlj6tbQVNDSUnnoIEoQW1lcmljYW4gU3RhbmRhcmQgQ29kZSBmb3IgSW5mb3JtYXRpb24gSW50ZXJjaGFuZ2UpOiDnvo7lm73kv6Hmga/kuqTmjaLmoIflh4bku6PnoIEpXShodHRwczovL2JhaWtlLmJhaWR1LmNvbS9pdGVtL0FTQ0lJLzMwOTI5NinnmoTkuJzopb/jgIIg5Zyo6ZO+5o6l5Lit77yM5oiR5Lus5LuO572R6aG15LiK55qE6KGo5qC85LiK55yL5Yiw77yaCgo+IOWtl+avjWjlr7nlupTnmoRBU0NJSeeggeaYrzcy77yM5Lmf5bCx5pivIDY0ICsgOOOAggoK6ICMMTA055qE5Y2B5YWt6L+b5Yi26KGo56S65Li6NDjvvIzov5nkuZ/lsLHmmK/kuLrku4DkuYho5a+55bqU55qE5Y6f5aeL57G75Z6L5Li6NDjkuobjgILpgqPkuYjljYHlha3ov5vliLblj4jmmK/kuKrku4DkuYjkuJzopb/lkaLvvJ/miJHku6zmnaXlhYjnnIvkuIvkuIvpnaLnmoTlh6DkuKrkvovlrZDlsLHmmI7nmb3kuobjgIIKCuWNgei/m+WItiB8IOS6jOi/m+WItu+8iEJpbmFyee+8iSB8IOWFq+i/m+WItu+8iE9jdGFs77yJIHwg5Y2B5YWt6L+b5Yi277yISGV477yJCi0tLSB8IC0tLSB8IC0tLSB8IC0tLQoxIHwgMGIxIHwgMG8xIHwgMHgxCjggfCAwYjEwMDAgfCAwbzEwIHwgMHg4CjEwIHwgMGIxMDEwIHwgMG8xMiB8IDB4YQoK5LmN5LiA55yL77yM5oCO5LmI6L+Z5LmI5aSaMOW8gOWktOeahOS4nOilv+OAguS4jeimgeaFjO+8jOi/meS6m+mDveaYr+inhOWumu+8jOS6huino+S4i+WwseWlveS6huOAguavlOWmggotIOS6jOi/m+WItuW8gOWktOmcgOimgeaYr2AwYmAsIOWQjumdoui3n+S4gOWghjDlkowx55qE5Liy77yM5Y+q6IO95pivMOWSjDHvvIzkuozov5vliLbmnIDlpKfmlbDlrZfmmK8xCi0g5YWr6L+b5Yi25LulYDBvYOW8gOWktO+8iOaVsOWtl+mbtuWSjOWwj+WGmeWtl+avjW/vvInvvIznhLblkI7lkI7pnaLmmK8w77yMMe+8jDLvvIwz77yMNO+8jDXvvIw277yMN++8jOS4jeS8mui2hei/hzflk4jvvIzlm6DkuLrlhavov5vliLbnmoTmnIDlpKfmlbDlrZfmmK83Ci0g5Y2B6L+b5Yi2IOWwseaYr+WSseS7rOW5s+aXtuaOpeinpueahDDjgIEx44CBMuOAgTPjgIE044CBNeOAgTbjgIE344CBOOOAgTkg5pyA5aSn5pWw5a2X5LiN5Lya6LaF6L+HOeWTpgotIOWNgeWFrei/m+WItu+8jOmZpOS6hjDjgIEx44CBMuOAgTPjgIE044CBNeOAgTbjgIE344CBOOOAgTnjgIHku6XlpJbvvIwxMO+8iOeUqOWtl+avjWHvvIzkuI3ljLrliIblpKflsI/lhpnvvInmnaXooajnpLrvvIwxMe+8iOeUqOWtl+avjULooajnpLrvvIzkuI3ljLrliIblpKflsI/lhpnvvInjgIExMu+8iOeUqOWtl+avjUPooajnpLrvvInjgIExM++8iOeUqOWtl+avjUTooajnpLrvvInjgIExNO+8iOeUqOWtl+avjUXooajnpLrvvInjgIExNe+8iOeUqOWtl+avjWbooajnpLrvvInjgILlkIzmoLfnmoTljYHlha3ov5vliLbnmoTmnIDlpKfmlbDlrZfmmK8xNeOAggoK6YKj5Zue5aS05p2l55yL5Y2B6L+b5Yi255qENzLvvIznlKjljYHlha3ov5vliLbmmK/lpoLkvZXooajnpLrnmoQKPiA2NCArIDgKPiDkuZ/lsLHmmK8gNCAqIDE2ICsgOAo+IOWNszB4NDgKCuaDs+S6huino+WFt+S9k+eahOi9rOaNouinhOWIme+8jOWPr+S7peeci+eci+S4i+mdoueahOmTvuaOpeWTpuOAggpb5Lul5YWr6L+b5Yi25Li65L6L77yM5a6e5pa96L+b5Yi26L2s5o2iXShodHRwczovL2JhaWtlLmJhaWR1LmNvbS9pdGVtLyVFNSU4NSVBQiVFOCVCRiU5QiVFNSU4OCVCNikKCgoKLS0tCgrliLDmraTvvIzmiJHku6zlsLHlj6/ku6XlhYjmrYfkuIDmrYfvvIzlho3lm57lpLTnnIvnnIsgKirlkJHph4/jgIHnn6Lph48qKui/memHjOmdoumDveWMheWQq+S6huWTquS6m+WGheWuueOAguWQjumdouiusuino+WFtuS7lueahOaVsOaNruexu+Wei+eahOaXtuWAme+8jOi/mOS8mueUqOW+l+WIsOWug+S7rOWRouOAggoKCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi5Z+656GA5pWw5o2u57G75Z6L5ZKM6K+t5rOVIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyMg6K+t5rOVCuivtOWIsOivreazle+8jOS9oOaDs+WIsOS6huS7gOS5iO+8n+iLseivremHjOmdoueahOWbuuWumuihqOi+vuWvueWQp++8jOaYr+eahO+8jOWcqOe8lueoi+ivreiogOS4re+8jOS5n+aciei/meS5iOS4gOWll+e6puWumuS/l+aIkOeahOinhOWumuOAggoK5a+55q+P5LiA6Zeo57yW56iL6K+t6KiA5p2l6K+077yM56ys5LiA5qyh6KKr5omn6KGM55qE6YCa5bi45piv57uP5YW455qEICoqaGVsbG8gd29ybGQqKiDnqIvluo/vvIzlnKhS6K+t6KiA5Lit77yM5oiR5Lus5Lmf5LiN6IO95YWN5L+X77yM5q+U5aaC5LiL6Z2i55qE5Luj56CB5bCx5piv5LiA5Liq5pyA566A5Y2V55qEUueoi+W6j+OAggpgYGB7cn0KcHJpbnQoImhlbGxvIHdvcmxkLiIpCmBgYAoK5aaC5q2k77yM5oiR5Lus5bCx5a2m5Lya5LqG5pyA566A5Y2V55qEUuivreiogOe8lueoi+WVpuOAggoK6YCa5bi45p2l6K6y77yM5Zyo5pel5bi455qE57yW56iL6L+H56iL5Lit77yM5oiR5Lus5LiN5Lya566A566A5Y2V5Y2V55qE5bCx5YaZ6L+Z5LmI5LiA6KGM5Luj56CB5a+55ZCn44CC5bCx5YOP5piv5YaZ5L2c5paH77yM5LiA5Y+l5Lik5Y+l5aSn5a626YO95rKh5LuA5LmI6Zeu6aKY77yM5L2G5piv6ZW/56+H57Sv54mN55qE5paH56ug77yM6K6p5Yir5Lq655yL6LW35p2l6L+Y5piv5b6I6LS55Yqy55qE77yM5Zug5q2k5oiR5Lus5bCx6ZyA6KaBICoq5rOo6YeKKirov5nkuYjkuKrkuJzopb/vvIzms6jph4rnmoTkvZznlKjlsLHnm7jlvZPkuo7lr7nnvJbnqIvor63oqIDnmoTnv7vor5HjgILlroPkuI3kvJrooqtS6K+t6KiA55qE5byV5pOO6Kej6YeK77yM5Y+q5piv5biu5Yqp5Yir5Lq655yL5Luj56CB55qE5pe25YCZ55CG6Kej56iL5bqP5piv5bmy5LuA5LmI55qE44CCCgotIOWNleihjOazqOmHigrlnKhS6K+t6KiA5Lit77yM5rOo6YeK5Lmf5pyJ5a6D5Zu65a6a55qE5qC85byPLOmCo+WwseaYrwo+ICMg6L+Z6YeM5piv5rOo6YeK5YaF5a65CgrkuZ/lsLHmmK/or7TvvIzku6UgYCNgIOWtl+espuW8gOWktOeahOihjO+8jOWwseaYr+azqOmHiuihjOOAguWug+WQjumdoueahOWGheWuuemDveS4jeS8muiiq+aJp+ihjOOAggoKLSDlpJrooYzms6jph4oK5pyJ5Lqb5pe25YCZ77yM5YaZ55qE5rOo6YeK5LiA6KGM6KGo6L+w5LiN5LqG5oiR5Lus55qE5oSP5Zu+77yM5oiR5Lus5Y+v5Lul6L+Z5LmI5YaZCmBgYHtyfQojIOesrOS4gOihjOazqOmHigojIOesrOS6jOihjOazqOmHigpgYGAKCuS4gOS4pOihjO+8jOS4pOS4ieihjOeahOazqOmHiuW+iOW4uOinge+8jOS9huaAu+S8muaciemcgOimgeWGmeWlveWkmuihjOeahOazqOmHiu+8jOi/meagt+avj+ihjOS4gOS4qiBgI2DlrZfnrKbvvIzlsLHmmL7lvpflvojnuYHnkJDjgILlpoLmnpzmiJHku6zlgY/lgY/opoHlhpnlvojlpJrooYznmoTms6jph4rvvIzmnInmsqHmnInmm7Tlpb3nmoTlhpnms5XlkaLvvJ/nrZTmoYjmmK/mnInnmoTvvIzlj6rkuI3ov4fkuI3mmK/lvojlpb3nnIvnvaLkuobvvIzlpoLkuIvvvJoKYGBge3J9CmlmKEZBTFNFKSB7CiAgIuesrOS4gOihjOazqOmHigogIOesrOS6jOihjOazqOmHigogIOesrOS4ieihjOazqOmHigogIOesrOWbm+ihjOazqOmHigogIOOAguOAguOAggogIOesrE7ooYzms6jph4oiCn0KYGBgCuS7juWtl+mdouaEj+aAneS4iuadpeeci++8muWmguaenOaYr0ZBTFNF77yM6YKj5LmI5omn6KGM6Iqx5ous5Y+36YeM6Z2i55qE5Luj56CB77yM6L+Z5Liq5Yik5pat5p2h5Lu25piv5rC46L+c5Lmf5LiN5oiQ56uL55qE77yM5Lmf5bCx5piv6Iqx5ous5Y+36YeM6Z2i55qE5Luj56CB5rC46L+c5Lmf5LiN5Lya5b6X5Yiw5omn6KGM77yM6L+Z5Lmf5bCx6L6+5Yiw5LqG5oiR5Lus55qE55uu55qE77yM5a6e546w5LqG5Lmm5YaZ5aSa6KGM5rOo6YeK55qE6ZyA5rGC44CCCgoKIyMjIOWfuuacrOaVsOaNruexu+WeiwrlvZPmj5DliLDnqIvluo/vvIzkvaDnmoTnrKzkuIDljbDosaHmmK/ku4DkuYjvvJ/mmK/kuI3mmK/kuIDmrrXku6PnoIHlnKjnnLzliY3po5jov4fvvIznhLblkI7oirHph4zog6Hlk6jnmoTvvIzkuI3mmI7miYDku6XnmoTlsLHlh7rnjrDkuoborqnkurrpnIfmg4rnmoTnu5PmnpzjgIIKCuWlveavlOaYr+e7meS6uueci+eXhe+8jOS9nOS4uuWMu+eUn+mmluWFiOimgeefpemBk+i/meWRs+iNr+eahOWKn+aViOaYr+S7gOS5iO+8jOiDveWkn+ayu+eWl+S7gOS5iOeXheeXh++8jOmCo+WRs+iNr+eahOWKn+aViOaYr+S7gOS5iO+8jOiDveWkn+ayu+eWl+S7gOS5iOeXheeXh+OAguiAjOWcqOe8lueoi+ivreiogOeahOS4lueVjOmHjO+8jOaVsOaNruexu+Wei+WwseaYr+i/meagt+eahOS4gOWRs+WRs+iNr++8jOaYr+aIkeS7rOebluaIv+WtkOaXtumcgOimgeeahOWfuuefs+OAggoKUuivreiogOaYr+S4gOmXqOiEmuacrOivreiogO+8jOaIluiAheivtOaYr+WKqOaAgeivreiogOOAguaYr+WQrOi1t+adpeaYr+S4jeaYr+S4gOWktOmbvuawtO+8jOi/memDveS7gOS5iOi3n+S7gOS5iOWRgOOAguS7gOS5iOaYr+WKqOaAgeivreiogO+8n+WPr+S7pemAmuS/l+eahOeQhuino+S4uu+8mgoKPiDlj5jph4/nmoTnsbvlnovlkozlgLzlj6/ku6XlnKjnqIvluo/miafooYznmoTov4fnqIvkuK3ooqvkv67mlLnjgIIKCui/mOaYr+S4jeWkn+ebtOeZve+8jOS4vuS4qvCfjLAgCgrmiJHnn6XkuY7kuIrlj6vigJzolpvlrprosJTnmoTwn5C24oCd77yM6L+H5q615pe26Ze05oiR5Y+v5Lul5Y+r4oCc6Jab5a6a6LCU55qE8J+QseKAne+8jOWGjei/h+auteaXtumXtOaIkeWPr+S7peWPq+KAnOiWm+WumuiwlOeahPCfkILigJ3nrYnnrYnvvIzmiJHlj6/ku6XkuIDnm7TmjaLjgILov5nlsLHlpb3mr5TmmK/lnKjigJzmiafooYzigJ3nmoTov4fnqIvkuK3liqjmgIHlnLDkv67mlLnkuoblj5jph4/vvIjkuZ/lsLHmmK/miJHov5nkuKrotKblj7fvvInnmoTigJzlgLzigJ3vvIjlkI3lrZfvvInvvJvnm7jlkIznmoTlnLrmma/vvIzmiJHmsqHlip7ms5Xkv67mlLnlvq7kv6Hlj7fvvIjkuI3mmK/lvq7kv6HmmLXnp7Dlk4jvvInvvIzkuIDml6bmiJHlvIDlp4vnmoTml7blgJnnlLPor7fkuoblvq7kv6Hlj7fvvIzku6XlkI7lsLHpg73mlLnkuI3kuobkuobjgIIKCuexu+avlOaAneiAg+WQjuaYr+S4jeaYr+inieW+l+aciemCo+S5iOS4gOeCueeQhuino+S6hu+8jOeOsOmYtuauteS4jeeQhuino+S5n+ayoeWFs+ezu+OAgueuoeS7lumdmeaAgeivreiogOi/mOaYr+WKqOaAgeivreiogO+8jOiDveato+ehrui/kOihjOWwseWujOS6i+OAggoKCuWlveeahO+8jOaOpeS4i+adpeeci+eci+mDveacieWTquWHoOWRs+iNr+WQp+OAguWTpu+8jOS4jeWvue+8jOaYr+WTquS6m+S4quaVsOaNruexu+Wei+WQp+OAggoK57G75Z6L5ZCN56ewIHwg6Kej6YeKCi0tLSB8IC0tLQrlkJHph4/jgIHnn6Lph48gfCDmnIDln7rnoYDnmoTmlbDmja7nsbvlnovvvIzlhbbku5bmlbDmja7nsbvlnovpg73lu7rnq4vlnKjlroPkuYvkuIrjgIIK5YiX6KGoIHwg5YiX6KGo57G75Z6LCuefqemYtSB8IOefqemYteexu+WeiwrmlbDnu4QgfCDmlbDnu4TnsbvlnosK5Zug5a2QIHwg5Zug5a2Q57G75Z6LCuaVsOaNruW4pyB8IOaVsOaNruW4pwoKCgrkuIDkuIvlrZDlpJrkuoblpb3lpJrnsbvlnovvvIzmjaLosIHpg73kvJrmmK/kuIDlpLTpm77msLTjgILkvYbmmK/ov5nkupvlj4jmmK/ln7rnoYDnmoTlhoXlrrnvvIzkuI3lrabmmK/kuI3ooYznmoTvvIzov5nml7blgJnlsLHkuI3opoHov73msYLpgJ/luqbllabvvIzlkrHmhaLngrnmnaUs5LiA5Liq5LiA5Liq5Zyw5p2l44CCCgoKIyMjIyDlkJHph4/jgIHnn6Lph4/nsbvlnosK6Jm954S25piv5pyA5pyA5Z+656GA55qE5pWw5o2u57G75Z6L77yM5L2G5a6D55qE5YaF5a655Y+v55yf5LiN5bCR44CC5YyF5ous5biD5bCU57G75Z6LKExvZ2ljYWwp44CB5pWw5YC857G75Z6LKG51bWJlcmljKeOAgeaVtOaVsOexu+WeiyhpbnRlZ2VyKeOAgeWkjeaVsOexu+Weiyhjb21wbGV4KeOAgeWtl+espuexu+WeiyhjaGFyYWN0ZXIp5ZKM5Y6f5aeL57G75Z6LKHJhdynjgILkuIvpnaLkuIDkuKrkuKrlnLDmnaXlrp7lnLDmtYvor5XkuIDkuIvjgIIKCiMjIyMjIOW4g+WwlOexu+WeiwrluIPlsJTnsbvlnovvvIzlsLHmmK/miJHku6zluLjor7TnmoTvvJog55yf44CB5YGH5a+55bqU5Lik5Liq5Zu65a6a55qE5YC8IFRSVUXjgIEgRkFMU0UKYGBge3J9CnByaW50KFRSVUUpCnByaW50KEZBTFNFKQpgYGAKCuWbnumhvuS4i+S4iumdouiusioq6K+t5rOVKirpg6jliIbnmoTml7blgJnvvIzmiJHku6zlgJ/liqlGQUxTReWunueOsOS6huWkmuihjOazqOmHiu+8jOWwseaYr+WboOS4ukZBTFNF55qE5Yik5pat5p2h5Lu25rC46L+c5Lmf5LiN5oiQ56uL77yM6Iqx5ous5Y+36YeM6Z2i55qE5Luj56CB5rC46L+c5Lmf5LiN5Lya5b6X5Yiw5omn6KGM44CCCgojIyMjIyDmlbDlgLznsbvlnosK5o+Q5Yiw5pWw5YC857G75Z6L77yM5LuO5oiR5Lus5aSa5bm05a+555Sf5rS755qE5L2T6aqM77yM5oiR5Lus5Y+v6IO95Lya5oOz5Yiw6L+Z5LmI5Yeg56eN77yaCgotIDHjgIEy44CBM+OAgTTjgIE144CBNuOAgTfjgIE444CBOeOAgTAKLSAxLjLjgIEyLjM044CBMy41NjcKCuivtOWvueS6hu+8jOaVsOWAvOexu+Wei+WwseaYr+i/meagt+eahOOAggpgYGB7cn0KcHJpbnQoMSkKcHJpbnQoMi4yKQpwcmludCgzLjQ1KQpgYGAKCgojIyMjIyDmlbTmlbDnsbvlnosK5ZKM5pWw5YC857G75Z6L55u45Ly877yM5L2G5piv5aSa5LqG5LiA5Liq54m554K577yM6YKj5bCx5piv5pWw5a2X5ZCO6Z2iIOi/mOmZhOW4puS6huS4gOS4queJueauiueahOWtl+espmBMYCzmr5TlpoIKMUwgIDNMICAgNUwgICA3TOetieetieOAggoK6YKj5LmI5L2g5Y+v6IO95Lya5pyJ55aR6Zeu77yM6L+Z5Liq5pW05pWw57G75Z6L5piv5LiN5piv5ZKM5LiK6Z2i55qE5pWw5YC857G75Z6L5pyJ6KaG55uW5ZGi77yf5q+U5aaC5pWw5YC857G75Z6L6YeM5Lmf5pyJMeWSjDPjgILlroPlkozmlbTmlbDnsbvlnovph4znmoQx5ZKMM+acieS7gOS5iOWMuuWIq+WRou+8nwoKR29vZCBxdWVzdGlvbuOAguaMieaIkeeahOeQhuino++8jOWcqOi/meS4queJueauiueahOWcuuaZr+S4i++8jOi/meS/qeayoeS7gOS5iOWkp+eahOWMuuWIq++8jOaXoOmdnuaYr+exu+Wei+S4iueojeacieS4jeWQjOOAguaVsOWAvOexu+Wei+ihqOekuueahOiMg+WbtOabtOW5v++8jOacieWwj+aVsO+8jOS5n+acieaVtOaVsO+8jOiAjOaVtOaVsOexu+Wei+iDveWkn+ihqOekuueahOWwseWPquacieaVtOaVsOOAggoK5Zyo5Luj56CB5Lit77yM5oiR5Lus5Y+v5Lul6YCa6L+HIGBjbGFzcygpYCDmlrnms5XvvIzmnaXliKTmlq3kuIDkuKrlj5jph4/liLDlupXmmK/ku4DkuYjnsbvlnovjgIIKYGBge3J9CiMg5pWw5YC857G75Z6LCnByaW50KGNsYXNzKDEpKQpwcmludChjbGFzcygxLjIzKSkKCiMg5pW05pWw57G75Z6LCnByaW50KGNsYXNzKDFMKSkKYGBgCgrliJ3mrKHkuYvlpJbvvIzmiJHku6zmmoLkuJTlj6/ku6XkuI3nlKjogIPomZHov5nkv6nnsbvlnovliLDlupXmnInku4DkuYjljLrliKvllabjgIIKCiMjIyMjIOWkjeaVsOexu+WeiwrkuI3nn6XpgZPkvaDov5jorrDkuI3orrDlvpfvvIxb6auY5Lit5pWw5a2m6YeM55qE5aSN5pWwXShodHRwczovL2JhaWtlLmJhaWR1LmNvbS9pdGVtLyVFNSVBNCU4RCVFNiU5NSVCMC8yNTQzNjU/ZnI9YWxhZGRpbiksIFLor63oqIDkuK3nmoTlpI3mlbDlkozlroPmmK/kuIDoh7TnmoTjgIIKCj4gQSA9IEIgKyBDaQo+IEIg5Li65a6e5pWw6YOo5YiG77yMIEPkuLromZrmlbDpg6jliIYKPiBpIOaYrzFpCj4gaSppIOS4ujBpCgpgYGB7cn0KcHJpbnQoKDErMWkpKigxLTFpKSkKcHJpbnQoKDErMWkpKigxKzFpKSkKYGBgCgrlnKjmlbDlrabov5DnrpfkuK3vvIzlpI3mlbDmmK/kuIDkuKrlvojph43opoHnmoTmpoLlv7XvvIzkvYblr7nkuo7njrDlnKjnmoTmiJHku6zvvIzkuobop6PkuIvmnInov5nkuYjkuKrmlbDmja7nsbvlnovlsLHlpJ/kuobvvIzlkI7pnaLnrYnnlKjliLDnmoTml7blgJnvvIzlkrHku6zlho3ov5vooYzorqjorrrjgIIKCgojIyMjIyDlrZfnrKbnsbvlnosKCuWcqFLor63oqIDkuK3vvIzmiJHku6zkvJrlvojpopHnuYHnmoTkvb/nlKjliLDov5nkuKrmlbDmja7nsbvlnovjgILmoLzlvI/kuLroi7HmlofnmoTljZXlvJXlj7fmiJbogIXoi7HmlofnmoTlj4zlvJXlj7cg5YyF6KO56LW35p2l55qE5YaF5a6577yM5q+U5aaC77yaCmBgYHtyfQonYScKJ2FiYycKIkEiCiJIZWxsbyAgIHdvcmxkIgoiVFJVRSIKYGBgCgror7jlpoLmraTnsbvvvIzpg73mmK/lrZfnrKbnsbvlnovjgILlho3mrKHlm57pob7kuIvliJrmiY3orrIg4oCc5aSa6KGM5rOo6YeK4oCdIOeahOaXtuWAme+8jOiKseaLrOWPt+aLrOi1t+adpeeahOmCo+WlveWHoOihjOeahOWGheWuue+8jOato+WlveaYr+aIkeS7rOeOsOWcqOeci+WIsOeahOKAnOWtl+espuexu+Wei+KAneeahOWAvOOAggoKCiMjIyMjIOWOn+Wni+exu+Weiwrmg7PkuIDmg7PvvIzkvaDop4nlvpfku4DkuYjmmK/ljp/lp4vnsbvlnovvvJ8KCuWcqOeoi+W6j+eahOS4lueVjOS4re+8jOS7o+eggeecn+ato+i/kOihjOeahOaXtuWAme+8jOmDveS8muiiq+iuoeeul+acuue/u+ivkeaIkDDlkowx77yM5Lmf5bCx5piv6K+05oiR5Lus55yL5Yiw55qE6L+Z5LiA6KGM6KGM55qE5Luj56CB77yM6YCa6L+HUuivreiogOW8leaTju+8iOWPkeWKqOacuu+8ieWcqOWunumZheS4iuiiq+i/kOihjOeahOaXtuWAmemDveS8muiiq+e8lueggeaIkOiuoeeul+acuuivhuWIq+eahOWGheWuue+8jOWPmOaIkOS4gOS4suS6jOi/m+WItueahOaVsOaNrua1geOAggoK5Li+5Liq5L6L5a2Q77yM5oiR5Lus55yL5Yiw55qE4oCcaGVsbG/igJ3ov5nkupTkuKrljZXor43vvIznlKjljp/lp4vnsbvlnovooajnpLrlsLHlj5jmiJDkuoYKYGBge3J9CiMgNDggNjUgNmMgNmMgNmYKYGBgCgrkvaDlj6/og73kvJrlpb3lpYfvvIzkuLrku4DkuYho5Y+Y5oiQ5LqGNDjlkaLvvJ/nqbbnq5/mmK/mgI7kuYjlj5jnmoTlkaLvvJ/lnKjop6Pph4rkuYvliY3vvIzmiJHku6zlhYjmnaXnnIvkuIvkuIDkuKrlj6tbQVNDSUnnoIEoQW1lcmljYW4gU3RhbmRhcmQgQ29kZSBmb3IgSW5mb3JtYXRpb24gSW50ZXJjaGFuZ2UpOiDnvo7lm73kv6Hmga/kuqTmjaLmoIflh4bku6PnoIEpXShodHRwczovL2JhaWtlLmJhaWR1LmNvbS9pdGVtL0FTQ0lJLzMwOTI5NinnmoTkuJzopb/jgIIg5Zyo6ZO+5o6l5Lit77yM5oiR5Lus5LuO572R6aG15LiK55qE6KGo5qC85LiK55yL5Yiw77yaCgo+IOWtl+avjWjlr7nlupTnmoRBU0NJSeeggeaYrzcy77yM5Lmf5bCx5pivIDY0ICsgOOOAggoK6ICMMTA055qE5Y2B5YWt6L+b5Yi26KGo56S65Li6NDjvvIzov5nkuZ/lsLHmmK/kuLrku4DkuYho5a+55bqU55qE5Y6f5aeL57G75Z6L5Li6NDjkuobjgILpgqPkuYjljYHlha3ov5vliLblj4jmmK/kuKrku4DkuYjkuJzopb/lkaLvvJ/miJHku6zmnaXlhYjnnIvkuIvkuIvpnaLnmoTlh6DkuKrkvovlrZDlsLHmmI7nmb3kuobjgIIKCuWNgei/m+WItiB8IOS6jOi/m+WItu+8iEJpbmFyee+8iSB8IOWFq+i/m+WItu+8iE9jdGFs77yJIHwg5Y2B5YWt6L+b5Yi277yISGV477yJCi0tLSB8IC0tLSB8IC0tLSB8IC0tLQoxIHwgMGIxIHwgMG8xIHwgMHgxCjggfCAwYjEwMDAgfCAwbzEwIHwgMHg4CjEwIHwgMGIxMDEwIHwgMG8xMiB8IDB4YQoK5LmN5LiA55yL77yM5oCO5LmI6L+Z5LmI5aSaMOW8gOWktOeahOS4nOilv+OAguS4jeimgeaFjO+8jOi/meS6m+mDveaYr+inhOWumu+8jOS6huino+S4i+WwseWlveS6huOAguavlOWmggotIOS6jOi/m+WItuW8gOWktOmcgOimgeaYr2AwYmAsIOWQjumdoui3n+S4gOWghjDlkowx55qE5Liy77yM5Y+q6IO95pivMOWSjDHvvIzkuozov5vliLbmnIDlpKfmlbDlrZfmmK8xCi0g5YWr6L+b5Yi25LulYDBvYOW8gOWktO+8iOaVsOWtl+mbtuWSjOWwj+WGmeWtl+avjW/vvInvvIznhLblkI7lkI7pnaLmmK8w77yMMe+8jDLvvIwz77yMNO+8jDXvvIw277yMN++8jOS4jeS8mui2hei/hzflk4jvvIzlm6DkuLrlhavov5vliLbnmoTmnIDlpKfmlbDlrZfmmK83Ci0g5Y2B6L+b5Yi2IOWwseaYr+WSseS7rOW5s+aXtuaOpeinpueahDDjgIEx44CBMuOAgTPjgIE044CBNeOAgTbjgIE344CBOOOAgTkg5pyA5aSn5pWw5a2X5LiN5Lya6LaF6L+HOeWTpgotIOWNgeWFrei/m+WItu+8jOmZpOS6hjDjgIEx44CBMuOAgTPjgIE044CBNeOAgTbjgIE344CBOOOAgTnjgIHku6XlpJbvvIwxMO+8iOeUqOWtl+avjWHvvIzkuI3ljLrliIblpKflsI/lhpnvvInmnaXooajnpLrvvIwxMe+8iOeUqOWtl+avjULooajnpLrvvIzkuI3ljLrliIblpKflsI/lhpnvvInjgIExMu+8iOeUqOWtl+avjUPooajnpLrvvInjgIExM++8iOeUqOWtl+avjUTooajnpLrvvInjgIExNO+8iOeUqOWtl+avjUXooajnpLrvvInjgIExNe+8iOeUqOWtl+avjWbooajnpLrvvInjgILlkIzmoLfnmoTljYHlha3ov5vliLbnmoTmnIDlpKfmlbDlrZfmmK8xNeOAggoK6YKj5Zue5aS05p2l55yL5Y2B6L+b5Yi255qENzLvvIznlKjljYHlha3ov5vliLbmmK/lpoLkvZXooajnpLrnmoQKPiA2NCArIDgKPiDkuZ/lsLHmmK8gNCAqIDE2ICsgOAo+IOWNszB4NDgKCuaDs+S6huino+WFt+S9k+eahOi9rOaNouinhOWIme+8jOWPr+S7peeci+eci+S4i+mdoueahOmTvuaOpeWTpuOAggpb5Lul5YWr6L+b5Yi25Li65L6L77yM5a6e5pa96L+b5Yi26L2s5o2iXShodHRwczovL2JhaWtlLmJhaWR1LmNvbS9pdGVtLyVFNSU4NSVBQiVFOCVCRiU5QiVFNSU4OCVCNikKCgoKLS0tCgrliLDmraTvvIzmiJHku6zlsLHlj6/ku6XlhYjmrYfkuIDmrYfvvIzlho3lm57lpLTnnIvnnIsgKirlkJHph4/jgIHnn6Lph48qKui/memHjOmdoumDveWMheWQq+S6huWTquS6m+WGheWuueOAguWQjumdouiusuino+WFtuS7lueahOaVsOaNruexu+Wei+eahOaXtuWAme+8jOi/mOS8mueUqOW+l+WIsOWug+S7rOWRouOAggoKCiMjIyMg5YiX6KGo44CB55+p6Zi144CB5pWw57uECgrov5nkuInkuKrmnInnm7jkvLzkuYvlpITvvIzmiYDku6XmlL7liLDkuIDlnZfmnaXnnIvjgILmnIDnm7Top4LnmoTmnaXnnIvvvJoKLSDliJfooajmmK/kuIDnu7TnmoTvvIzlj4LogIPkuIDkuKrlj6rmnIl46L2055qE5Z2Q5qCH57O7Ci0g55+p6Zi15piv5LqM57u055qE77yM5Y+C6ICD5LiA5LiqeC155b2i5byP55qE5Z2Q5qCH57O7Ci0g5pWw57uE5pivTue7tOeahO+8iE7lj6/ku6XmmK8x44CBMuOAgTPvvIznlJroh7PmmK/lpKfkuo4z55qE5pW05pWw77yJ77yM5pWw57uE5piv5LiN5piv5bCx5LiN6Zq+55CG6Kej5ZWm77yM5aaC5p6cTj0x77yM6YKj5a6D5bCx5piv5Liq5YiX6KGo77ybICDlpoLmnpxOPTLvvIzpgqPlroPlsLHmmK/kuKrnn6npmLXvvJsgIOWmguaenE49M++8jOmCo+WwseaYr+S4qngteS165b2i5byP55qE56m66Ze05Z2Q5qCH57O75ZGA77yM5aaC5p6cTj4z5ZGi77yM5oiR5rKh5om+5Yiw5ZCI6YCC55qE5q+U5Za777yM5ZOI5ZOI5ZOI77yM5L2g5Y+v5Lul6Ieq55Sx5Y+R5oyl5LiL77yI5q+U5aaC77yM5pKH5byA5LiA5Liq57u05bqm5LiN5Y67566h5a6D77yM6YKjNOe7tOeahOWwseWPmOaIkOS6hjPnu7TvvIzlj4jlj5jmiJDkuobkuIDkuKp4LXkteuW9ouW8j+eahOepuumXtOWdkOagh+ezu+S6huS4jeaYr++8iQoK5Y2V5Y2V5piv55So5paH5a2X5p2l6KGo6L+w77yM5oC75b2S5piv5LiN5aSf5q2j5byP77yM5ZKx5Lus6L+Y5piv55So5Luj56CB5p2l556F556F44CCCgotIOWFiOadpeeci+eci+KAnOWIl+ihqOKAnQpgYGB7cn0KIyDliJvlu7rkuIDkuKrliJfooagKbGlzdDEgPC0gbGlzdCgxLCAyLjM0LCA1KzZpLCAiQUJDIiwgc2luKQojIOaJk+WNsOWIl+ihqOeahOWAvApwcmludChsaXN0MSkKYGBgCgrliJfooajnmoTliJvlu7rkvb/nlKjnmoTlhbPplK7lrZfmmK9gbGlzdCgpYCzlj6/ku6XnnIvliLDliJfooajkuK3nmoTlhYPntKDvvIzmlbDmja7nsbvlnovlvojkuLDlr4zvvIzmnInlkrHku6zkuIrpnaLorrLnmoTmlbDlgLzlnovvvIzmlbTmlbDlnovvvIzlrZfnrKblnovvvIznlJroh7Pov5jmnInigJzlh73mlbDvvIjlh73mlbDnmoTlhoXlrrnlkI7nu63nq6DoioLkvJrorrLliLDnmoTlk4jvvIzlhYjkuI3nlKjnrqHlroPvvInigJ0KCgotIOeci+eci+KAnOefqemYteKAnQpgYGB7cn0KTSA9IG1hdHJpeCggYygnYScsJ2EnLCdiJywnYycsJ2InLCdhJyksIG5yb3cgPSAyLCBuY29sID0gMywgYnlyb3cgPSBUUlVFKQpwcmludChNKQpgYGAKCuefqemYteeahOWIm+W7uueUqOWIsOeahOWFs+mUruWtl+aYr2BtYXRyaXgoKWAsIOaYr+S4jeaYr+W+iOW9ouixoeeahOi+k+WHuue7k+aenOOAguS7o+eggemHjOmdoueUqOWIsOS6hmBjKCdhJywgJ2EnLCAnYicsICdjJywgJ2InLCAnYScpYCDlkowgYG5yb3c9MmAg5ZKMIGBuY29sPTNgIOS7peWPiiBgYnlyb3c9VFJVRWDjgILku5bku6zliIbliKvmmK/ku4DkuYjmhI/mgJ3lkaLvvJ8KCmBjKCdhJywgJ2EnLCAnYicsICdjJywgJ2InLCAnYScpYCDmhI/mgJ3mmK/liJvlu7o25Liq4oCc5Z+65pys5pWw5o2u57G75Z6L4oCd5Li65a2X56ym5pWw5o2u57G75Z6L55qE5Y+Y6YePCmBucm93PTJgIOWNs251bWJlciBvZiByb3cg6K6+572u6KGM5pWw5Li6MgpgbmNvbD0zYCDljbNudW1iZXIgb2YgY29sdW1uIOiuvue9ruWIl+aVsOS4ujMKYGJ5cm93PVRSVUVgIOaMieeFp+ihjOadpeaOkuWIlwoK5o6l5LiL5p2l5oiR5Lus5pS55Y+Y5LiL5Y+C5pWw55qE5YC877yM55yL55yL6L6T5Ye65Lya5LiN5Lya5pyJ5LuA5LmI5LiN5ZCM55qE44CCCmBgYHtyfQpNID0gbWF0cml4KCBjKCdhJywnYScsJ2InLCdjJywnYicsJ2EnKSwgbnJvdyA9IDMsIG5jb2wgPSAyLCBieXJvdyA9IFRSVUUpCnByaW50KE0pCmBgYAoK5oiR5Lus5pS55Y+Y5LqGYG5yb3c9M2Ag5ZKMIGBuY29sPTJgIOeEtuWQjuefqemYteWwseWPmOaIkOS6hjPooYwy5YiXCgpgYGB7cn0KTSA9IG1hdHJpeCggYygnYScsJ2EnLCdiJywnYycsJ2InLCdhJyksIG5yb3cgPSAyLCBuY29sID0gMywgYnlyb3cgPSBGQUxTRSkKcHJpbnQoTSkKYGBgCuinguWvn+i+k+WHuue7k+aenO+8jOS4juesrOS4gOS4quWvueavlOaIkeS7rOWwseaUueWPmOS6huesrOWbm+S4quWPguaVsGBieXJvdz1GQUxTRWDnhLblkI7vvIzov5k25Liq5pWw5YC85bCx5Y+Y5oiQ5LqG5oyJ5YiX5LyY5YWI55qE5pa55byP6L+b6KGM5LqG5o6S5YiX44CCCgrlm6DmraTkuI3pmr7lj5HnjrDvvIzov5nlh6DkuKrlj4LmlbDliIbliKvotbfliLDkuobku4DkuYjkvZznlKjkuoblkKfjgIIKCi0g55yL55yL4oCc5pWw57uE4oCdCmBgYHtyfQphIDwtIGFycmF5KGMoJ2dyZWVuJywneWVsbG93JyksZGltID0gYygzLDMsMikpCnByaW50KGEpCmBgYAoK5Yib5bu65pWw57uE55qE5YWz6ZSu5a2X5pivYGFycmF5KClg77yM54S25ZCO5L2/55So5Y+C5pWwYGRpbT0gYygzLCAzLCAyKWAg5Yib5bu65LqG5LiA5Liq5oul5pyJ5Lik5Liq5Z2X77yM5q+P5Liq5Z2X5YS/5YaF6YOo5YiG5Yir5piv5LiA5LiqM1gz55qE55+p6Zi144CC6YKj5oiR5Lus5pS55Y+Y5LiL5Y+C5pWw77yM55yL55yL5Lya5pyJ5LuA5LmI5LiN5LiA5qC355qE5ZCn44CCCgpgYGB7cn0KYSA8LSBhcnJheShjKCdncmVlbicsJ3llbGxvdycpLGRpbSA9IGMoMywzLDEpKQpwcmludChhKQpgYGAKCmBgYHtyfQphIDwtIGFycmF5KGMoJ2dyZWVuJywneWVsbG93JyksZGltID0gYygzLDMsMykpCnByaW50KGEpCmBgYAoKCgpgYGB7cn0KYSA8LSBhcnJheShjKCdncmVlbicsJ3llbGxvdycpLGRpbSA9IGMoMiwzLDIpKQpwcmludChhKQpgYGAKCgpgYGB7cn0KYSA8LSBhcnJheShjKCdncmVlbicsJ3llbGxvdycpLGRpbSA9IGMoMywyLDIpKQpwcmludChhKQpgYGAKCgoKCgoK5piv5LiN5piv5Y+R546w5LqG5LuA5LmI6KeE5b6L5ZGi77yfCgpgZGltYOaEj+aAneaYr2BkaW1lbnNpb25gIOe7tOW6pueahOaEj+aAneOAgmBkaW0gPSBjIChucm93LCBuY29sLCBudW1iZXIpYOWIhuWIq+S7o+ihqOS6huimgeeUn+aIkOWkmuWwkeS4quS4quWHoOihjOWHoOWIl+eahOefqemYteOAggoK55+l6YGT5LqG6L+Z5Lqb5pyJ5LuA5LmI55So5ZGi77yf5LiN6KaB552A5oCl77yM5pqC5pe256Gu5a6e5rKh5LuA5LmI55So77yM5L2G5LuK5ZCO6L+Z5Lqb5Lic6KW/6YO95piv5Z+656GA77yM5ZKx5Lus6L+Y5piv5b6X5p2l5LqG6Kej5LiL44CCCgo=</div>
 
 
 
