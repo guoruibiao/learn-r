@@ -27,4 +27,4 @@ Step2：下载R语言的车架子
 
 
 安装完成后，出现下图中内容，就成了。
-![RStudio](/images/1-rstudio.jpg)
+![RStudio](https://github.com/guoruibiao/learn-r/raw/master/images/1-rstudio.jpg)
