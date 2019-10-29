@@ -1885,16 +1885,91 @@ the_cure(&quot;唐轩&quot;, 37)</code></pre>
 <p>关于函数，咱们再多聊几句。实际上的函数有很多形式</p>
 <ul>
 <li>带参数的和不带参数的</li>
-<li>带返回值的和不带返回值的 #等等吧，我们平时也不需要过分关注这块，遇到了知道是怎么回事就好。</li>
+<li>带返回值的和不带返回值的</li>
 </ul>
+<p>等等吧，我们平时也不需要过分关注这块，遇到了知道是怎么回事就好。</p>
 </div>
 </div>
-<div id="包" class="section level2">
-<h2>包</h2>
+<div id="包" class="section level3">
+<h3>包</h3>
+<p>不知道你有没有听说过 <strong>“包”治百病</strong> 这个词，女朋友生气了，买个包，嘿，立马就不生气了。但是我们今天要讲的R语言里的“包”可不是LV包，酷奇包哦，而是一种组织规范。</p>
+<blockquote>
+<p>R语言的包是R函数，编译代码和样本数据的集合。 它们存储在R语言环境中名为“library”的目录下。 默认情况下，R语言在安装期间安装一组软件包。 随后添加更多包，当它们用于某些特定目的时。 当我们启动R语言控制台时，默认情况下只有默认包可用。 已经安装的其他软件包必须显式加载以供将要使用它们的R语言程序使用。</p>
+</blockquote>
+<p>上面说到所有安装了的包都会放到一个叫library的目录中，那怎么找到这个路径呢？请看下面的代码：</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoLmxpYlBhdGhzKCkpXG5gYGAifQ== -->
+<pre class="r"><code>print(.libPaths())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiL0xpYnJhcnkvRnJhbWV3b3Jrcy9SLmZyYW1ld29yay9WZXJzaW9ucy8zLjYvUmVzb3VyY2VzL2xpYnJhcnlcIlxuIn0= -->
+<pre><code>[1] &quot;/Library/Frameworks/R.framework/Versions/3.6/Resources/library&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>在不同的机器上，输出的这个路径可能会不一样。不过没关系，有输出就可以啦。</p>
+<p>有时候我们可能想看看，截止到现在为止，我到底安装过哪些包呢？可以借助下面的代码</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgpXG5gYGAifQ== -->
+<pre class="r"><code>library()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>获取当前的R环境中已经加载的包</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VhcmNoKClcbmBgYCJ9 -->
+<pre class="r"><code>search()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIi5HbG9iYWxFbnZcIiAgICAgICAgXCJ0b29sczpyc3R1ZGlvXCIgICAgIFwicGFja2FnZTpzdGF0c1wiICAgIFxuIFs0XSBcInBhY2thZ2U6Z3JhcGhpY3NcIiAgXCJwYWNrYWdlOmdyRGV2aWNlc1wiIFwicGFja2FnZTp1dGlsc1wiICAgIFxuIFs3XSBcInBhY2thZ2U6ZGF0YXNldHNcIiAgXCJwYWNrYWdlOm1ldGhvZHNcIiAgIFwiQXV0b2xvYWRzXCIgICAgICAgIFxuWzEwXSBcInBhY2thZ2U6YmFzZVwiICAgICBcbiJ9 -->
+<pre><code> [1] &quot;.GlobalEnv&quot;        &quot;tools:rstudio&quot;     &quot;package:stats&quot;    
+ [4] &quot;package:graphics&quot;  &quot;package:grDevices&quot; &quot;package:utils&quot;    
+ [7] &quot;package:datasets&quot;  &quot;package:methods&quot;   &quot;Autoloads&quot;        
+[10] &quot;package:base&quot;     </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>安装别人的包，可以通过CRAN网页安装，也可以下载别人打包好的zip压缩文件进行安装（这个对新手来说比较复杂，咱先不看了）。</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcIlhNTFwiKVxuYGBgIn0= -->
+<pre class="r"><code>install.packages(&quot;XML&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoi6K+V5byAVVJM4oCZaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi9tYWNvc3gvZWwtY2FwaXRhbi9jb250cmliLzMuNi9YTUxfMy45OC0xLjIwLnRneidcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24veC1nemlwJyBsZW5ndGggMjIxOTQ4MCBieXRlcyAoMi4xIE1CKVxuPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbmRvd25sb2FkZWQgMi4xIE1CXG4ifQ== -->
+<pre><code>试开URL’https://cran.rstudio.com/bin/macosx/el-capitan/contrib/3.6/XML_3.98-1.20.tgz'
+Content type 'application/x-gzip' length 2219480 bytes (2.1 MB)
+==================================================
+downloaded 2.1 MB</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5UaGUgZG93bmxvYWRlZCBiaW5hcnkgcGFja2FnZXMgYXJlIGluXG5cdC92YXIvZm9sZGVycy9kMC9kNHp6cjRuNTFtN192ajlyeWZiNjMzcGMwMDAwZ24vVC8vUnRtcHFNYmdIbC9kb3dubG9hZGVkX3BhY2thZ2VzXG4ifQ== -->
+<pre><code>
+The downloaded binary packages are in
+    /var/folders/d0/d4zzr4n51m7_vj9ryfb633pc0000gn/T//RtmpqMbgHl/downloaded_packages</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>安装完之后，我们来查看一下，是否成功安装了<code>XML</code>的包。</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgpXG5gYGAifQ== -->
+<pre class="r"><code>library()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>可以看到，借助这个函数，我们就可以安装绝大部分我们需要的包了，如果想安装<code>json</code>的包，那么换成下面的代码即可。</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcImpzb25cIilcbmBgYCJ9 -->
+<pre class="r"><code>install.packages(&quot;json&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>也就是说，我们也可以自己写很多包，然后发布到CRAN上，这样别人就可以下载和安装你写的包了。自己写的劳动成果被别人使用了，是不是很有成就感呢？</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAi5Ye95pWw5LiO5YyFIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyMg5Ye95pWwCgrnqIvluo/lkZjnu5nkvaDnmoTnrKzkuIDljbDosaHmmK/ku4DkuYjvvJ8KCueng+WktO+8n+agvOWtkOihq++8n+S4jeS/rui+ueW5he+8n+aLlumei+Wkp+ijpOihqe+8nwoK5oiR6Ieq5bex5L2c5Li65LiA5Liq5bCP56CB5Yac77yM56iL5bqP5ZGY57uZ5oiR55qE56ys5LiA5oSf6KeJ5bCx5piv4oCc5oeS4oCd44CC5Li65LuA5LmI6L+Z5LmI6K+05ZGi77yf5Zug5Li65YaZ5Luj56CB55qE5pe25YCZ77yM56iL5bqP5ZGY5piv6IO95bCR5YaZ5bCx5bCR5YaZ77yM6IO95LiN5YaZ5bCx5LiN5YaZ44CC5L+X56ew77ya4oCc5aSn5LqL5YyW5bCP77yM5bCP5LqL5YyW5LqG4oCd8J+YnOOAggoK6K+06L+Z5Liq6Lef5LuK5aSp55qE5Li76aKY4oCc5Ye95pWw4oCd5pyJ5LuA5LmI6IGU57O75ZCX77yf5b2T54S25ZWm77yM6KaB5LiN5oiR5Lmf5LiN5Lya5YaZ5a6D55qE5a+55ZCn44CCCgrlho3mnaXkuIDkuKrnjrDlrp7nlJ/mtLvkuK3nmoTkvovlrZDvvJrljLvnlJ/nu5nkurrnnIvnl4XvvIzlr7nnm7jkvLznmoTnl4Xnl4fvvIzmgLvkvJrmnInkuIDkuKrigJzmqKHmnb/igJ3lvI/nmoToja/mlrnjgILnhLblkI7lho3pkojlr7nmr4/kuKrkurrnmoTnl4Xnl4fnmoTkuI3lkIzkuYvlpITvvIznqI3liqDkv67mlLnjgILov5nph4znmoTigJzmqKHmnb/igJ3lnKjnvJbnqIvor63oqIDnmoTkuJbnlYzkuK3vvIzlsLHlj6/ku6Xnp7DkuYvkuLrigJzlh73mlbDigJ3vvIzlj6rpnIDopoHlhpnkuIDmrKHvvIzlsLHlj6/ku6XooqvlkI7nu63lpJrkuKrlnLDmlrnkvb/nlKjjgIIKCuaYr+S4jeaYr+aEn+inieW+iOecgeS6i++8n+i/meWwseaYr+KAnOWBt+aHkuKAneeahOS4gOS4quW+iOWlveeahOaPkOeOsOOAguato+aYr+WboOS4uui/meenjeKAnOWBt+aHkuKAne+8jOeoi+W6j+WRmOiuvuiuoeWHuuS6huW+iOWkmue7j+WFuOeahOiuvuiuoeaooeW8j++8jOiuqei9r+S7tuW3peeoi+S4jeWGjeaYr+Wekuenr+acqOS4gOiIrO+8jOi2iuadpei2iuiHg+iCv++8jOiAjOaYr+aBsOWIsOWlveWkhOeahOWPmOW+l+abtOWKoOmrmOaViO+8jOabtOWKoOaWueS+v+OAggoK5omv5LqG6Juu5aSa55qE5LqG77yM5LiL6Z2i5byA5aeL6L+b5YWl5q2j6aKY77yM6K6y6K6yUuivreiogOS4reeahOKAnOWHveaVsOKAneOAggoKIyMjIyDlhoXnva7lh73mlbAK5LuO5a2X6Z2i5oSP5oCd5LiK5p2l55yL77yM4oCc5YaF572u4oCd5bCx5piv6Ieq5bim55qE77yM5a+55LiN77yf5piv55qE77yM5oiR5Lus5LmL5YmN6K+06L+HUuivreiogOaYr+S4gOS4quWPkeWKqOacuu+8jOWGhee9ruS6huW+iOWkmuS4nOilv++8jOWFtuS4reWwseacieW+iOWkmueahOWHveaVsOOAguS4i+mdouadpeS4vuWHoOS4quS+i+WtkOWQp++8jOWQjumdouWPr+iDvei/mOS8mumBh+WIsOWug+S7rOWTpuOAggoKCioqcGFzdGUoKSoqIOWHveaVsAoKYGBge3J9CmZpbmFsX3N0cmluZyA9IHBhc3RlKCJoZWxsbyIsICJ3b3JsZCIpCnByaW50KGZpbmFsX3N0cmluZykKYGBgCgoKKipwcmludCgpKiog5Ye95pWwCgrov5nkuKrlh73mlbDmiJHku6zlt7Lnu4/op4Hov4flvojlpJrmrKHkuobvvIzkuI3pmYznlJ/lkKfwn5icCmBgYHtyfQpwcmludCgi5LiW6Ze0576O5aW95LiO5L2g546v546v55u45omjIikKY2F0KCLmoKLmnb4iKQpgYGAKCioqc3VtKCkqKiDlh73mlbAKYGBge3J9CnN1bW1hcnkgPSBzdW0oMToxMCkKcHJpbnQoc3VtbWFyeSkKYGBgCgrnsbvkvLznmoTlhoXnva7lh73mlbDov5jmnInlvojlpJrvvIznrYnkvaDmiJHljrvlj5HnjrDlkaLjgIIKCgoKCiMjIyMg6Ieq5a6a5LmJ5Ye95pWwCgroh6rlrprkuYnnmoTmhI/mgJ3lsLHmmK/nqIvluo/lkZjnvJblhpnnmoTlh73mlbDvvIzlhbbnu5PmnoTmoLzlvI/kuLrvvJoKCmBgYHtyfQpmdW5jdGlvbl9uYW1lIDwtIGZ1bmN0aW9uKGFyZ18xLCBhcmdfMiwgLi4uKSB7CiAgIEZ1bmN0aW9uIGJvZHkgCiAgIHJldHVybiB4eHgKfQpgYGAKCuWPr+S7peeci+WIsOi/meS4quahhuaetuWMheWQq+S6hui/meS5iOWHoOS4quWGheWuue+8mgoKLSBgZnVuY3Rpb25fbmFtZWAg5bCx5piv5Liq5Y+Y6YeP5ZCN77yM5oyJ54Wn5ZKx5Lus5LmL5YmN5a2m5Lmg55qE5aaC5L2V57uZ5Y+Y6YeP5Y+W5ZCN77yM6ZqP5L6/5Y+W5LiA5Liq56ym5ZCI6KeE6IyD55qE5ZCN5a2X5bCx5aW9Ci0gYGZ1bmN0aW9uKClgIOi/meaYr+S4quWFs+mUruWtl++8jOaYr+WbuuWumueahOWTpgotIGBhcmcxLCBhcmcyLCBhcmczIC4uLmAg5Ye95pWw5Y+C5pWw77yM5Y+v5Lul5qC55o2u6ZyA5rGC6ZqP5L6/5YaZ5aW95aSa5Liq5Y+C5pWwCi0gYEZ1bmN0aW9uIGJvZHlgICDlh73mlbDkvZPvvIzov5nkuKrph4zpnaLkuZ/lj6/ku6Xpmo/kvr/lhpnvvIzlj6ropoHmmK9S6K+t6KiA55qE5Luj56CB77yM5YaZ5ZWl6YO96KGM5ZOmCi0gYHJldHVybiB4eHhgIOi/lOWbnuWAvO+8jOWFtuS4rSBgcmV0dXJuYOaYr+WFs+mUruWtl++8jOWbuuWumueahOWTpu+8jOiAjGB4eHhg5bCx5piv6KaB6L+U5Zue55qE5YC877yM5qC55o2u5Ye95pWw55qE5L2c55So5LiN5ZCM77yM5LiN5ZCM55qE5Ye95pWw6L+U5Zue55qE5YaF5a655Lmf5LiN5LiA5a6a55u45ZCM44CC5Y+m5aSW77yM6L+U5Zue5YC85Lmf5Y+v5Lul5LiN5YaZ77yM5bCx55yB55Wl5o6JYHJldHVybmDor63lj6XlsLHlpb3jgIIKCgrop4TliJnkuI3og73mia/lpKrlpJrvvIzlkKbliJnopoHnnIvkuI3kuIvljrvkuobmmK/kuI3mmK/vvJ/pgqPlkrHmnaXkuKrkvovlrZDvvIznnIvnnIvmgI7kuYjlhpnkuIDkuKrlh73mlbDlkKfjgIIKCgotIOmXrumXrumtlOmVnO+8jOi/meS4quS4lueVjOS4iuiwgeacgOa8guS6ru+8nwoKYGBge3J9Cm1pcnJvcl9zYXkgPC0gZnVuY3Rpb24obmFtZSkgewogICMgcGFzdGUoKSDov5nkuKrlh73mlbDmmK/lhoXnva7lh73mlbDvvIzmhI/mgJ3mmK/miorkuKTkuKrlrZfnrKbkuLLmi7zmjqXmiJDkuIDkuKrlrZfnrKbkuLIKICBwcmludChwYXN0ZShuYW1lLCAi5pyA576O5ZWmIikpCn0KCiMg6LCD55So5Yia5omN5YaZ5aW955qE5Ye95pWwCm1pcnJvcl9zYXkoIuWwj+adjuWMu+eUnyIpCmBgYAoKCi0g5aaC5L2V5rK755aX5oSf5YaS77yfCgpgYGB7cn0KIyDlrprkuYnkuIDkuKrlh73mlbAKdGhlX2N1cmUgPC0gZnVuY3Rpb24obmFtZSwgdGVtcGVyYXR1cmUpIHsKICBpZiggbmFtZSA9PSAi5ZSQ6L2pIikgewogICAgcHJpbnQoIuWUkOi9qeaCo+eahOS4jeaYr+aEn+WGkuWTpu+8jOivt+aCqOaNouS4quiNr+aWuSIpCiAgfWVsc2UgewogICAgaWYodGVtcGVyYXR1cmUgPiAzNykgewogICAgICBwcmludCgi5pyJ54K55Y+R54On77yM6K+35Yqg54K55rK755aX5Y+R54On55qE6I2v5ZOBIikKICAgIH1lbHNlIHsKICAgICAgcHJpbnQoIue7meW8gOebkuaEn+W6t+WQp++8jOWlveWDj+WPquaYr+aZrumAmueahOaEn+WGkuWRoiIpCiAgICB9CiAgfQp9CgojIOiwg+eUqOWHveaVsOi/m+ihjOa1i+ivlQp0aGVfY3VyZSgi5ZSQ6L2pIiwgMzcpCnRoZV9jdXJlKCLlvKDkuIkiLCAzNi41KQp0aGVfY3VyZSgi5byg5LiJIiwgMzkpCmBgYAoKCuWFs+S6juWHveaVsO+8jOWSseS7rOWGjeWkmuiBiuWHoOWPpeOAguWunumZheS4iueahOWHveaVsOacieW+iOWkmuW9ouW8jwoKCgotIOW4puWPguaVsOeahOWSjOS4jeW4puWPguaVsOeahAotIOW4pui/lOWbnuWAvOeahOWSjOS4jeW4pui/lOWbnuWAvOeahAoj562J562J5ZCn77yM5oiR5Lus5bmz5pe25Lmf5LiN6ZyA6KaB6L+H5YiG5YWz5rOo6L+Z5Z2X77yM6YGH5Yiw5LqG55+l6YGT5piv5oCO5LmI5Zue5LqL5bCx5aW944CCCgojIyDljIU=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi5Ye95pWw5LiO5YyFIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIyMg5Ye95pWwCgrnqIvluo/lkZjnu5nkvaDnmoTnrKzkuIDljbDosaHmmK/ku4DkuYjvvJ8KCueng+WktO+8n+agvOWtkOihq++8n+S4jeS/rui+ueW5he+8n+aLlumei+Wkp+ijpOihqe+8nwoK5oiR6Ieq5bex5L2c5Li65LiA5Liq5bCP56CB5Yac77yM56iL5bqP5ZGY57uZ5oiR55qE56ys5LiA5oSf6KeJ5bCx5piv4oCc5oeS4oCd44CC5Li65LuA5LmI6L+Z5LmI6K+05ZGi77yf5Zug5Li65YaZ5Luj56CB55qE5pe25YCZ77yM56iL5bqP5ZGY5piv6IO95bCR5YaZ5bCx5bCR5YaZ77yM6IO95LiN5YaZ5bCx5LiN5YaZ44CC5L+X56ew77ya4oCc5aSn5LqL5YyW5bCP77yM5bCP5LqL5YyW5LqG4oCd8J+YnOOAggoK6K+06L+Z5Liq6Lef5LuK5aSp55qE5Li76aKY4oCc5Ye95pWw4oCd5pyJ5LuA5LmI6IGU57O75ZCX77yf5b2T54S25ZWm77yM6KaB5LiN5oiR5Lmf5LiN5Lya5YaZ5a6D55qE5a+55ZCn44CCCgrlho3mnaXkuIDkuKrnjrDlrp7nlJ/mtLvkuK3nmoTkvovlrZDvvJrljLvnlJ/nu5nkurrnnIvnl4XvvIzlr7nnm7jkvLznmoTnl4Xnl4fvvIzmgLvkvJrmnInkuIDkuKrigJzmqKHmnb/igJ3lvI/nmoToja/mlrnjgILnhLblkI7lho3pkojlr7nmr4/kuKrkurrnmoTnl4Xnl4fnmoTkuI3lkIzkuYvlpITvvIznqI3liqDkv67mlLnjgILov5nph4znmoTigJzmqKHmnb/igJ3lnKjnvJbnqIvor63oqIDnmoTkuJbnlYzkuK3vvIzlsLHlj6/ku6Xnp7DkuYvkuLrigJzlh73mlbDigJ3vvIzlj6rpnIDopoHlhpnkuIDmrKHvvIzlsLHlj6/ku6XooqvlkI7nu63lpJrkuKrlnLDmlrnkvb/nlKjjgIIKCuaYr+S4jeaYr+aEn+inieW+iOecgeS6i++8n+i/meWwseaYr+KAnOWBt+aHkuKAneeahOS4gOS4quW+iOWlveeahOaPkOeOsOOAguato+aYr+WboOS4uui/meenjeKAnOWBt+aHkuKAne+8jOeoi+W6j+WRmOiuvuiuoeWHuuS6huW+iOWkmue7j+WFuOeahOiuvuiuoeaooeW8j++8jOiuqei9r+S7tuW3peeoi+S4jeWGjeaYr+Wekuenr+acqOS4gOiIrO+8jOi2iuadpei2iuiHg+iCv++8jOiAjOaYr+aBsOWIsOWlveWkhOeahOWPmOW+l+abtOWKoOmrmOaViO+8jOabtOWKoOaWueS+v+OAggoK5omv5LqG6Juu5aSa55qE5LqG77yM5LiL6Z2i5byA5aeL6L+b5YWl5q2j6aKY77yM6K6y6K6yUuivreiogOS4reeahOKAnOWHveaVsOKAneOAggoKIyMjIyDlhoXnva7lh73mlbAK5LuO5a2X6Z2i5oSP5oCd5LiK5p2l55yL77yM4oCc5YaF572u4oCd5bCx5piv6Ieq5bim55qE77yM5a+55LiN77yf5piv55qE77yM5oiR5Lus5LmL5YmN6K+06L+HUuivreiogOaYr+S4gOS4quWPkeWKqOacuu+8jOWGhee9ruS6huW+iOWkmuS4nOilv++8jOWFtuS4reWwseacieW+iOWkmueahOWHveaVsOOAguS4i+mdouadpeS4vuWHoOS4quS+i+WtkOWQp++8jOWQjumdouWPr+iDvei/mOS8mumBh+WIsOWug+S7rOWTpuOAggoKCioqcGFzdGUoKSoqIOWHveaVsAoKYGBge3J9CmZpbmFsX3N0cmluZyA9IHBhc3RlKCJoZWxsbyIsICJ3b3JsZCIpCnByaW50KGZpbmFsX3N0cmluZykKYGBgCgoKKipwcmludCgpKiog5Ye95pWwCgrov5nkuKrlh73mlbDmiJHku6zlt7Lnu4/op4Hov4flvojlpJrmrKHkuobvvIzkuI3pmYznlJ/lkKfwn5icCmBgYHtyfQpwcmludCgi5LiW6Ze0576O5aW95LiO5L2g546v546v55u45omjIikKY2F0KCLmoKLmnb4iKQpgYGAKCioqc3VtKCkqKiDlh73mlbAKYGBge3J9CnN1bW1hcnkgPSBzdW0oMToxMCkKcHJpbnQoc3VtbWFyeSkKYGBgCgrnsbvkvLznmoTlhoXnva7lh73mlbDov5jmnInlvojlpJrvvIznrYnkvaDmiJHljrvlj5HnjrDlkaLjgIIKCgoKCiMjIyMg6Ieq5a6a5LmJ5Ye95pWwCgroh6rlrprkuYnnmoTmhI/mgJ3lsLHmmK/nqIvluo/lkZjnvJblhpnnmoTlh73mlbDvvIzlhbbnu5PmnoTmoLzlvI/kuLrvvJoKCmBgYHtyfQpmdW5jdGlvbl9uYW1lIDwtIGZ1bmN0aW9uKGFyZ18xLCBhcmdfMiwgLi4uKSB7CiAgIEZ1bmN0aW9uIGJvZHkgCiAgIHJldHVybiB4eHgKfQpgYGAKCuWPr+S7peeci+WIsOi/meS4quahhuaetuWMheWQq+S6hui/meS5iOWHoOS4quWGheWuue+8mgoKLSBgZnVuY3Rpb25fbmFtZWAg5bCx5piv5Liq5Y+Y6YeP5ZCN77yM5oyJ54Wn5ZKx5Lus5LmL5YmN5a2m5Lmg55qE5aaC5L2V57uZ5Y+Y6YeP5Y+W5ZCN77yM6ZqP5L6/5Y+W5LiA5Liq56ym5ZCI6KeE6IyD55qE5ZCN5a2X5bCx5aW9Ci0gYGZ1bmN0aW9uKClgIOi/meaYr+S4quWFs+mUruWtl++8jOaYr+WbuuWumueahOWTpgotIGBhcmcxLCBhcmcyLCBhcmczIC4uLmAg5Ye95pWw5Y+C5pWw77yM5Y+v5Lul5qC55o2u6ZyA5rGC6ZqP5L6/5YaZ5aW95aSa5Liq5Y+C5pWwCi0gYEZ1bmN0aW9uIGJvZHlgICDlh73mlbDkvZPvvIzov5nkuKrph4zpnaLkuZ/lj6/ku6Xpmo/kvr/lhpnvvIzlj6ropoHmmK9S6K+t6KiA55qE5Luj56CB77yM5YaZ5ZWl6YO96KGM5ZOmCi0gYHJldHVybiB4eHhgIOi/lOWbnuWAvO+8jOWFtuS4rSBgcmV0dXJuYOaYr+WFs+mUruWtl++8jOWbuuWumueahOWTpu+8jOiAjGB4eHhg5bCx5piv6KaB6L+U5Zue55qE5YC877yM5qC55o2u5Ye95pWw55qE5L2c55So5LiN5ZCM77yM5LiN5ZCM55qE5Ye95pWw6L+U5Zue55qE5YaF5a655Lmf5LiN5LiA5a6a55u45ZCM44CC5Y+m5aSW77yM6L+U5Zue5YC85Lmf5Y+v5Lul5LiN5YaZ77yM5bCx55yB55Wl5o6JYHJldHVybmDor63lj6XlsLHlpb3jgIIKCgrop4TliJnkuI3og73mia/lpKrlpJrvvIzlkKbliJnopoHnnIvkuI3kuIvljrvkuobmmK/kuI3mmK/vvJ/pgqPlkrHmnaXkuKrkvovlrZDvvIznnIvnnIvmgI7kuYjlhpnkuIDkuKrlh73mlbDlkKfjgIIKCgotIOmXrumXrumtlOmVnO+8jOi/meS4quS4lueVjOS4iuiwgeacgOa8guS6ru+8nwoKYGBge3J9Cm1pcnJvcl9zYXkgPC0gZnVuY3Rpb24obmFtZSkgewogICMgcGFzdGUoKSDov5nkuKrlh73mlbDmmK/lhoXnva7lh73mlbDvvIzmhI/mgJ3mmK/miorkuKTkuKrlrZfnrKbkuLLmi7zmjqXmiJDkuIDkuKrlrZfnrKbkuLIKICBwcmludChwYXN0ZShuYW1lLCAi5pyA576O5ZWmIikpCn0KCiMg6LCD55So5Yia5omN5YaZ5aW955qE5Ye95pWwCm1pcnJvcl9zYXkoIuWwj+adjuWMu+eUnyIpCmBgYAoKCi0g5aaC5L2V5rK755aX5oSf5YaS77yfCgpgYGB7cn0KIyDlrprkuYnkuIDkuKrlh73mlbAKdGhlX2N1cmUgPC0gZnVuY3Rpb24obmFtZSwgdGVtcGVyYXR1cmUpIHsKICBpZiggbmFtZSA9PSAi5ZSQ6L2pIikgewogICAgcHJpbnQoIuWUkOi9qeaCo+eahOS4jeaYr+aEn+WGkuWTpu+8jOivt+aCqOaNouS4quiNr+aWuSIpCiAgfWVsc2UgewogICAgaWYodGVtcGVyYXR1cmUgPiAzNykgewogICAgICBwcmludCgi5pyJ54K55Y+R54On77yM6K+35Yqg54K55rK755aX5Y+R54On55qE6I2v5ZOBIikKICAgIH1lbHNlIHsKICAgICAgcHJpbnQoIue7meW8gOebkuaEn+W6t+WQp++8jOWlveWDj+WPquaYr+aZrumAmueahOaEn+WGkuWRoiIpCiAgICB9CiAgfQp9CgojIOiwg+eUqOWHveaVsOi/m+ihjOa1i+ivlQp0aGVfY3VyZSgi5ZSQ6L2pIiwgMzcpCnRoZV9jdXJlKCLlvKDkuIkiLCAzNi41KQp0aGVfY3VyZSgi5byg5LiJIiwgMzkpCmBgYAoKCuWFs+S6juWHveaVsO+8jOWSseS7rOWGjeWkmuiBiuWHoOWPpeOAguWunumZheS4iueahOWHveaVsOacieW+iOWkmuW9ouW8jwoKLSDluKblj4LmlbDnmoTlkozkuI3luKblj4LmlbDnmoQKLSDluKbov5Tlm57lgLznmoTlkozkuI3luKbov5Tlm57lgLznmoQKCuetieetieWQp++8jOaIkeS7rOW5s+aXtuS5n+S4jemcgOimgei/h+WIhuWFs+azqOi/meWdl++8jOmBh+WIsOS6huefpemBk+aYr+aAjuS5iOWbnuS6i+WwseWlveOAggoKCiMjIyDljIUKCuS4jeefpemBk+S9oOacieayoeacieWQrOivtOi/hyAqKuKAnOWMheKAneayu+eZvueXhSoqIOi/meS4quivje+8jOWls+aci+WPi+eUn+awlOS6hu+8jOS5sOS4quWMhe+8jOWYv++8jOeri+mprOWwseS4jeeUn+awlOS6huOAguS9huaYr+aIkeS7rOS7iuWkqeimgeiusueahFLor63oqIDph4znmoTigJzljIXigJ3lj6/kuI3mmK9MVuWMhe+8jOmFt+Wlh+WMheWTpu+8jOiAjOaYr+S4gOenjee7hOe7h+inhOiMg+OAggoKCj4gUuivreiogOeahOWMheaYr1Llh73mlbDvvIznvJbor5Hku6PnoIHlkozmoLfmnKzmlbDmja7nmoTpm4blkIjjgIIg5a6D5Lus5a2Y5YKo5ZyoUuivreiogOeOr+Wig+S4reWQjeS4uuKAnGxpYnJhcnnigJ3nmoTnm67lvZXkuIvjgIIg6buY6K6k5oOF5Ya15LiL77yMUuivreiogOWcqOWuieijheacn+mXtOWuieijheS4gOe7hOi9r+S7tuWMheOAgiDpmo/lkI7mt7vliqDmm7TlpJrljIXvvIzlvZPlroPku6znlKjkuo7mn5Dkupvnibnlrprnm67nmoTml7bjgIIg5b2T5oiR5Lus5ZCv5YqoUuivreiogOaOp+WItuWPsOaXtu+8jOm7mOiupOaDheWGteS4i+WPquaciem7mOiupOWMheWPr+eUqOOAgiDlt7Lnu4/lronoo4XnmoTlhbbku5bova/ku7bljIXlv4XpobvmmL7lvI/liqDovb3ku6XkvpvlsIbopoHkvb/nlKjlroPku6znmoRS6K+t6KiA56iL5bqP5L2/55So44CCCgoKCgrkuIrpnaLor7TliLDmiYDmnInlronoo4XkuobnmoTljIXpg73kvJrmlL7liLDkuIDkuKrlj6tsaWJyYXJ555qE55uu5b2V5Lit77yM6YKj5oCO5LmI5om+5Yiw6L+Z5Liq6Lev5b6E5ZGi77yf6K+355yL5LiL6Z2i55qE5Luj56CB77yaCgpgYGB7cn0KcHJpbnQoLmxpYlBhdGhzKCkpCmBgYAoK5Zyo5LiN5ZCM55qE5py65Zmo5LiK77yM6L6T5Ye655qE6L+Z5Liq6Lev5b6E5Y+v6IO95Lya5LiN5LiA5qC344CC5LiN6L+H5rKh5YWz57O777yM5pyJ6L6T5Ye65bCx5Y+v5Lul5ZWm44CCCgoKCuacieaXtuWAmeaIkeS7rOWPr+iDveaDs+eci+eci++8jOaIquatouWIsOeOsOWcqOS4uuatou+8jOaIkeWIsOW6leWuieijhei/h+WTquS6m+WMheWRou+8n+WPr+S7peWAn+WKqeS4i+mdoueahOS7o+eggQpgYGB7cn0KbGlicmFyeSgpCmBgYAoKCuiOt+WPluW9k+WJjeeahFLnjq/looPkuK3lt7Lnu4/liqDovb3nmoTljIUKCgpgYGB7cn0Kc2VhcmNoKCkKYGBgCgoK5a6J6KOF5Yir5Lq655qE5YyF77yM5Y+v5Lul6YCa6L+HQ1JBTue9kemhteWuieijhe+8jOS5n+WPr+S7peS4i+i9veWIq+S6uuaJk+WMheWlveeahHppcOWOi+e8qeaWh+S7tui/m+ihjOWuieijhe+8iOi/meS4quWvueaWsOaJi+adpeivtOavlOi+g+Wkjeadgu+8jOWSseWFiOS4jeeci+S6hu+8ieOAggoKYGBge3J9Cmluc3RhbGwucGFja2FnZXMoIlhNTCIpCmBgYAoKCuWuieijheWujOS5i+WQju+8jOaIkeS7rOadpeafpeeci+S4gOS4i++8jOaYr+WQpuaIkOWKn+WuieijheS6hmBYTUxg55qE5YyF44CCCgpgYGB7cn0KbGlicmFyeSgpCmBgYAoKCuWPr+S7peeci+WIsO+8jOWAn+WKqei/meS4quWHveaVsO+8jOaIkeS7rOWwseWPr+S7peWuieijhee7neWkp+mDqOWIhuaIkeS7rOmcgOimgeeahOWMheS6hu+8jOWmguaenOaDs+WuieijhWBqc29uYOeahOWMhe+8jOmCo+S5iOaNouaIkOS4i+mdoueahOS7o+eggeWNs+WPr+OAggoKYGBge3J9Cmluc3RhbGwucGFja2FnZXMoImpzb24iKQpgYGAKCuS5n+WwseaYr+ivtO+8jOaIkeS7rOS5n+WPr+S7peiHquW3seWGmeW+iOWkmuWMhe+8jOeEtuWQjuWPkeW4g+WIsENSQU7kuIrvvIzov5nmoLfliKvkurrlsLHlj6/ku6XkuIvovb3lkozlronoo4XkvaDlhpnnmoTljIXkuobjgILoh6rlt7HlhpnnmoTlirPliqjmiJDmnpzooqvliKvkurrkvb/nlKjkuobvvIzmmK/kuI3mmK/lvojmnInmiJDlsLHmhJ/lkaLvvJ8K</div>
 
 
 
