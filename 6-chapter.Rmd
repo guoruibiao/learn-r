@@ -1,0 +1,225 @@
+---
+title: "图表"
+output: html_notebook
+---
+
+图表是R语言处理完数据之后生成的。可以很直观的把数据呈现在人们面前，怎么用R语言去生成一个个有意思的图表呢？
+
+那就让我们开始今天的内容吧😜
+
+---
+
+### 条形图
+
+在R语言中，我们使用`barplot()`函数来创建条形图，先不用管怎么使用它(待会给您说个好办法，再多参数也不怕)，记住这个名字就好啦，记不住名字咋办？
+
+答案是：凉拌😜
+
+很多东西都是熟能生巧，所以记不住也没关系，我们不还有搜索引擎的吗，搜的一下就搜出来了，咱们只需要知道R语言能干这个事就好啦。
+
+#### 普通条形图
+
+```{r}
+columns =  c(7,12,28,3,41)
+barplot(columns)
+
+```
+
+
+下面我们介绍一个万能的查看函数使用文档的方法。看下图：
+![如何查看一个函数中每个参数代表了什么意思](https://github.com/guoruibiao/learn-r/raw/master/images/6-chapter-help.jpg)
+
+
+#### 加了标题、标签、颜色的条形图
+
+先看代码，再去研究每个参数是什么意思。
+
+```{r}
+columns = c(1, 3, 5, 7, 2)
+names = c("Monday", "Wednesday", "Friday", "Weekend", "Tuesday")
+
+barplot(columns, names.arg = names, col = "green", border = "red")
+```
+
+可以看出：
+
+- 第一个参数表明了会有哪几列数据；
+- `names.arg` 代表对应的每一列叫啥名
+- `col` 代表对应列使用什么颜色来显示
+- `border` 代表边框用什么颜色表示
+
+除此之外，我们可以看到还有其他的参数，可以锦上添花，让图标显示的更好看。
+- `xlab` x轴表示了什么
+- `ylab` y轴表示了什么
+- `main` 图表本身叫什么名字
+
+
+下面我们不妨用一下这几个参数。
+
+```{r}
+columns = c(9000, 12000, 18000, 36000, 6700)
+names = c("ZhagSan", "LiSi", "WangWu", "ZhaoLiu", "HanQi")
+
+barplot(columns, names.arg = names, xlab = "Nickname", ylab = "Salary", main = "Salary-chart", col = "purple", border = "green")
+```
+
+是不是对这些参数又有了一点认识，其实编程就是这么一个不断熟悉的过程，我们都是一点点从未知到已知，不断的练习，才慢慢写出了这么多代码的。
+
+
+#### 组合条形图和堆积条形图
+
+这个咱就暂时不画了，后面有需要的时候再去查参考文档，画出它。
+
+[复杂条形图画法](https://www.w3cschool.cn/r/r_bar_charts.html)
+
+
+### 散点图
+
+我们使用`plot()`函数来绘制散点图，很简单，下面一起来看下。
+
+#### 普通散点图的绘制
+
+```{r}
+columns = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1.2, 2.3, 3.4)
+plot(columns)
+```
+
+
+#### 加颜色的散点图绘制
+
+```{r}
+columns = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1.2, 2.3, 3.4)
+plot(columns, col='green')
+```
+
+#### 其他散点图
+
+编数据好麻烦呢，有没有什么好点的方便的函数呢？ 在R语言中，`mtcars()`就是用来创建实验数据集的。我们会通过`mtcars`来创建一个数据集，然后应用到散点图中。
+
+```{r}
+dataset = mtcars
+plot(
+  x = dataset$mpg,
+  y = dataset$wt,
+  xlab = "MPG",
+  ylab = "Weight"
+)
+```
+
+这样，就把编造的数据在散点图中画出来啦。
+
+
+
+### 折线图
+
+在R语言中，我们使用`plot()`方法来创建折线图，与散点图相比，多了一个参数，那就是`type = "o"`。其余用法和散点图别无二致。
+
+#### 普通折线图
+
+```{r}
+columns = c(1, 3, 5, 7, 9, 8, 6, 4, 2, 0)
+plot(columns, type = "o")
+```
+
+
+#### 带标题，颜色的折线图
+
+和条形图的语法类似，我们可以通过`plot()`里面的参数来美化生成的图表。
+
+```{r}
+columns = c(1, 3, 5, 7, 9, 8, 6, 4, 2, 0)
+plot(columns, type = "o", col = "green", xlab = "X", ylab = "Y", main = "Chart-Name")
+```
+
+
+#### 画多条线的折线图
+
+画单条线的场景可能不会很多，我们更有可能需要画多条折线，然后通过对比去分析某些具体的问题。这个时候就可以借助`lines()` 函数来实现了，这样我们就可以在同一个图表上画出多条折线图。
+
+```{r}
+columns1 = c(1, 3, 5, 7, 9, 8, 6, 4, 2, 0)
+columns2 = c(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+columns3 = c(9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
+
+# 画第一条线
+plot(columns1, type="o", col="red")
+lines(columns2, type="o", col="green")
+lines(columns3, type="o", col="blue")
+```
+
+
+
+### 饼状图
+
+饼状图一般会用在看“占比”的场景，拿安卓手机来说：华为手机市场占比多少，小米手机市场占比多少，OPPO和vivo呢？等等。
+
+在R语言中，我们使用`pie()`函数来创建饼状图。下面看下参数列表：
+
+```
+pie(x, labels, radius, main, col, clockwise)
+```
+分别代表了什么意思呢？
+
+- x是包含饼图中使用的数值的向量，比如有几列值
+- labels用于给出切片的描述。对应x中每一列哦
+- radius表示饼图圆的半径（值-1和+1之间）。
+- main表示图表的标题。
+- col表示调色板。
+- clockwise是指示片段是顺时针还是逆时针绘制的逻辑值。
+
+
+下面还是来看个具体的例子，比如就显示安卓手机市场占比率（数据是我瞎编的，没有参考价值哦）
+
+#### 普通饼状图
+
+```{r}
+columns = c(0.4, 0.2, 0.25, 0.15)
+names = c("HuaWei", "Xiaomi", "OPPO", "VIVO")
+colors = c("red", "yellow", "green", "blue")
+
+
+pie(
+  x = columns,
+  labels = names,
+  col = colors,
+  radius = 1,
+  main = "Android phone percentage",
+  clockwise = TRUE,
+)
+```
+
+
+#### 显示百分比的饼状图
+
+没有百分比，总感觉缺了点什么，所以下面我们来补充一下。
+
+```{r}
+columns = c(0.4, 0.2, 0.25, 0.15)
+names = c("HuaWei", "Xiaomi", "OPPO", "VIVO")
+piepercent =  round(100*columns/sum(columns), 1)
+
+# 先画饼状图
+pie(
+  x = columns,
+  labels = piepercent,
+  col = rainbow(length(columns)),
+  radius = 0.7,
+  main = "Android-phone-percentage-rainbow-style",
+  clockwise = FALSE,
+)
+
+# 图例需要在饼状图画完之后调用，否则会报错
+legend("topright", names, fill = rainbow(length(columns)))
+```
+
+
+
+
+到这里，使用R语言进行简单的画图应该不成问题啦，给自己点个赞吧。已经学了这么多了，剩下的就是查阅遇到的函数的帮助文档，然后不断的练习。
+
+
+
+熟能生巧后，你也是一个合格的卖油翁滴😜
+
+
+
