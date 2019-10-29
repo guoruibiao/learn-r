@@ -11,7 +11,7 @@ R language learning notes.
 - [x] [1 环境安装](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
 - [x] [2 基础语法](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
 - [x] [3 运算符与流程控制](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
-- [ ] [4 函数](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
+- [ ] [4 函数与包](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
 - [ ] [5 练手小示例](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
 - [ ] [6 图表](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
 - [ ] [7 图表简单应用](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
