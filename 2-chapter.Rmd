@@ -211,6 +211,109 @@ print((1+1i)*(1+1i))
 
 诸如此类，都是字符类型。再次回顾下刚才讲 “多行注释” 的时候，花括号括起来的那好几行的内容，正好是我们现在看到的“字符类型”的值。
 
+关于字符类型，这里咱得多说几句，因为它被使用的太频繁啦。刚才我们也看到，不管是英文的单引号还是英文的双引号，它们都是成对出现的。那你可能会有疑问，如果不是成对出现的会怎样呢？答案就是它们不是一个合法的字符串，R语言会识别不了，导致程序运行失败。
+```{r}
+# 两个双引号中间又出现了双引号
+string = "abc " cdedfg"
+
+# 两个单引号中间又出现了单引号
+string = 'abcdef ' ghijkj'
+```
+
+
+现在有了合法的字符串了，我们肯定离不开如何去操作这些字符串，所以接下来介绍几个常见的操作字符串的函数。
+
+###### 字符串拼接函数paste
+
+```{r}
+# 拼接两个字符串
+hello = "HELLO"
+world = "WORLD"
+
+# 拼接后的字符串
+result = paste(hello, world)
+print(result)
+```
+
+我们看到输出了“HELLO WORLD”字样。也许你会有疑问，`hello` 和 `world` 这俩变量里面没有空格呢？难道不应该输出`HELLOWORLD`这个字符串吗？为什么中间多了个空格呢？
+
+答案就在于`paste()`这个函数上，查阅文档我们可以发现`paste()`完整的参数列表如下：
+```{r}
+Usage
+paste (..., sep = " ", collapse = NULL)
+
+Arguments
+...	
+one or more R objects, to be converted to character vectors.
+
+sep	
+a character string to separate the terms. Not NA_character_.
+
+collapse	
+an optional character string to separate the results. Not NA_character_.
+
+
+```
+
+第一个参数是`...` 它代表的是不定数量的参数，比如我们可以`paste(hello, world, name)`等好多的字符串变量。
+
+第二个参数是`sep` 不难看出，它是`separator` (分隔符)的缩写，而且它默认是`" "`这一个空格，那是不是说如果我们指定了这个分隔符是其他的字符，那`paste()`得到的结果就是另一种情况呢？
+
+```{r}
+# 拼接后的字符串
+hello = "HELLO"
+world = "WORLD"
+
+# 修改sep，再次进行拼接
+result = paste(hello, world, sep="-")
+print(result)
+```
+是不是能理解这个放大怎么用啦。是的，程序有时候就是按照别人给的规范照着写，就这么一点点累计起来的。
+
+第三个参数就不管它啦，记得东西太多，反而效果会不好。
+
+
+###### 字符串剪切函数substring
+提到了字符串拼接，那下面聊聊字符串剪切。比我我就想要一个字符串中间的部分，这个时候我们可以借助`substring`函数。
+
+```{r}
+string = "hello world."
+result = substring(string, 2, 5)
+print(result)
+```
+
+
+#####它的作用就是从左往右，拿到第2个字母到第5个字母的内容。和其他编程语言不一样的是，R语言中：下标是从1开始数数，而不是0哦😜#。这一点习惯了其他编程语言的同学，可能会稍有不适。习惯了就好啦。
+
+ 字符串长度计算函数nchar
+人家给了一个字符串“HELLOWORLD”，凭借你优秀而出色的数数能力，一下子就算出来了，这个字符串一共包含了10个字符。那要是给你“DSHDBSAHDBSAHDBSAHDSAJDSAJDSVADGSVFGSFDHF”这么一串呢？是不是瞬间不想看了呢？更别提一个字母一个字母的去查了。这个时候，你会想要是有人能直接告诉我答案，该多好。
+
+巧的是，R语言里还就真有这么一个函数, 那就是`nchar()`
+
+```{r}
+print(nchar("DSHDBSAHDBSAHDBSAHDSAJDSAJDSVADGSFDHF"))
+```
+
+再来一个
+
+```{r}
+print(nchar("DSHDSDYYFVAGFVDGFVDFGDVFGDVFDVFDSGFVDSFTDVFTDVFDVFDSGFVDSF"))
+```
+
+比起口算手查，这样是不是很爽？😜
+
+###### 大小写转换toupper和tolower
+
+这个就不多说了，咱直接看代码就明白了
+```{r}
+# 转成大写字母
+print(toupper("hello world"))
+
+# 转成小写字母
+print(tolower("HEllo WORLD"))
+```
+
+
 
 ##### 原始类型
 想一想，你觉得什么是原始类型？
