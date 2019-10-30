@@ -14,3 +14,22 @@ hist(y, main = "Normal distribution")
 ```
 
 
+### 轴须图
+
+```{r}
+dt <- rnorm(100, mean=0, sd=1)
+plot(density(dt), main="Kernel Denisty")
+polygon(density(dt), col="lightgreen", border="blue", lwd=2)  # 绘制多边形的函数
+# 叠加正态曲线
+xfit <- seq(min(dt), max(dt), length.out=40)
+yfit <- dnorm(xfit, mean=mean(dt), sd=sd(dt))
+lines(xfit, yfit, col="red", lwd=2)
+legend("topright", lty=c(1,1), col=c("blue", "red"),
+       legend=c("Kernel Density", "Normality Curve"))
+```
+
+
+### 更多实例
+
+- [真正带你零基础画图入门](https://wklchris.github.io/R-plotting-basic.html)
+- [R语言绘图笔记汇总](https://zhuanlan.zhihu.com/p/25074456)
