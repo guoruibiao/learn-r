@@ -12,7 +12,7 @@ R language learning notes.
 - [x] [2 基础语法](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
 - [x] [3 运算符与流程控制](https://github.com/guoruibiao/learn-r/blob/master/3-chapter.Rmd)
 - [x] [4 函数与包](https://github.com/guoruibiao/learn-r/blob/master/4-chapter.Rmd)
-- [ ] [5 练手小示例](https://github.com/guoruibiao/learn-r/blob/master/5-chapter.Rmd)
+- [x] [5 练手小示例](https://github.com/guoruibiao/learn-r/blob/master/5-chapter.Rmd)
 - [x] [6 图表](https://github.com/guoruibiao/learn-r/blob/master/6-chapter.Rmd)
 - [ ] [7 图表简单应用](https://github.com/guoruibiao/learn-r/blob/master/7-chapter.Rmd)
 - [ ] [8 拓展](https://github.com/guoruibiao/learn-r/blob/master/8-chapter.Rmd)
