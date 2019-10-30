@@ -1749,41 +1749,29 @@ summary {
 
 
 <!-- rnb-text-begin -->
+<div id="猜数字小游戏" class="section level3">
+<h3>猜数字小游戏</h3>
 <p>学完了这么写个概念性的东西，今天咱来写点有意思的东西。写个猜数字的小游戏怎么样？游戏规则如下：</p>
 <p>随机产生一个1-100以内的整数，然后去猜这个数字是几，看看谁用的次数少。</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDpmo/mnLrnlJ/miJDkuIDkuKogMS0xMDDlhoXnmoTmlbDlrZfvvIxcbiMgcnVuaWYobiwgbWluLCBtYXgpIOWPguaVsOeahOaEj+aAneWIhuWIq+aYr++8jOeUn+aIkOWHoOS4quaVsOWtl++8m+acgOWwj+WAvO+8m+acgOWkp+WAvFxucmFuZG9tX251bWJlciA9IHJ1bmlmKDEsIDEsIDEwMClcblxuIyDlsIblsI/mlbDovazmiJDmlbTmlbDvvIzmlrnkvr/njJzmtYsgXG4jIGNlaWxpbmcoKSDmg7PosaHmiJDlpKnoirHmnb/vvIzlsLHmmK/lkJHkuIrlj5bmlbTjgIJcbiMgMS4yIC0+IDI7ICAgICAgMy45OC0+NFxudGFyZ2V0X251bWJlciA9IGNlaWxpbmcocmFuZG9tX251bWJlcilcblxuIyDpgJrov4flvqrnjq/mnaXliKTmlq3mmK/lkKbnjJzkuK3kuobmlbDlrZdcbmd1ZXNzX251bWJlciA9IDBcbndoaWxlKFRSVUUpIHtcbiAgIyDmm7TmlrDnjJzmtYvnmoTmrKHmlbBcbiAgZ3Vlc3NfbnVtYmVyID0gZ3Vlc3NfbnVtYmVyICsgMTtcbiAgIyDku47mjqfliLblj7DovpPlhaXnjJzmtYvnmoTmlbDmja5cbiAgbnVtYmVyID0gcmVhZGxpbmUoXCLor7fovpPlhaXmgqjnjJzmtYvnmoTmlbDlrZfvvIgxLTEwMOS7peWGheWTpu+8iVwiKVxuICAjIOaOp+WItuWPsOi+k+WFpeeahOaVsOaNruaYr2NoYXJhY3Rlcuexu+Wei+eahO+8jOaIkeS7rOWFiOi9rOaIkGludGVnZXLmlbTmlbDmlbDlgLznsbvlnotcbiAgbnVtYmVyID0gYXMuaW50ZWdlcihudW1iZXIpXG4gICMg5Yik5pat54yc5rWL55qE5pWw5a2X5ZKM55uu5qCH5pWw5a2X55qE5aSn5bCP77yM5pa55L6/6LCD5pW05LiL5LiA5qyh54yc5rWL55qE6IyD5Zu0XG4gIGlmKG51bWJlciA9PSB0YXJnZXRfbnVtYmVyKSB7XG4gICAgcHJpbnQoXCLmga3llpzmgqjnjJzlr7nllaZcIilcbiAgICBicmVha1xuICB9ZWxzZSBpZih0YXJnZXRfbnVtYmVyID4gbnVtYmVyKSB7XG4gICAgcHJpbnQoXCLmgqjnjJznmoTmlbDlrZflgY/lsI/vvIzor5XnnYDloavkuIDkuKrlpKfngrnnmoTmlbDlkKdcIilcbiAgfWVsc2Uge1xuICAgIHByaW50KFwi5oKo54yc5rWL55qE5pWw5a2X5YGP5aSn77yM6K+V552A5aGr5LiA5Liq5bCP54K555qE5pWw5ZCnXCIpXG4gIH1cbn1cbiMg5omT5Y2w5oC75YWx54yc5rWL5LqG5Yeg5qyhXG5wcmludChndWVzc19udW1iZXIpXG5gYGAifQ== -->
-<pre class="r"><code># 随机生成一个 1-100内的数字，
-# runif(n, min, max) 参数的意思分别是，生成几个数字；最小值；最大值
-random_number = runif(1, 1, 100)
-
-# 将小数转成整数，方便猜测 
-# ceiling() 想象成天花板，就是向上取整。
-# 1.2 -&gt; 2;      3.98-&gt;4
-target_number = ceiling(random_number)
-
-# 通过循环来判断是否猜中了数字
-guess_number = 0
-while(TRUE) {
-  # 更新猜测的次数
-  guess_number = guess_number + 1;
-  # 从控制台输入猜测的数据
-  number = readline(&quot;请输入您猜测的数字（1-100以内哦）&quot;)
-  # 控制台输入的数据是character类型的，我们先转成integer整数数值类型
-  number = as.integer(number)
-  # 判断猜测的数字和目标数字的大小，方便调整下一次猜测的范围
-  if(number == target_number) {
-    print(&quot;恭喜您猜对啦&quot;)
-    break
-  }else if(target_number &gt; number) {
-    print(&quot;您猜的数字偏小，试着填一个大点的数吧&quot;)
-  }else {
-    print(&quot;您猜测的数字偏大，试着填一个小点的数吧&quot;)
-  }
-}
-# 打印总共猜测了几次
-print(guess_number)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyDpmo/mnLrnlJ/miJDkuIDkuKogMS0xMDDlhoXnmoTmlbDlrZfvvIxcbiMgcnVuaWYobiwgbWluLCBtYXgpIOWPguaVsOeahOaEj+aAneWIhuWIq+aYr++8jOeUn+aIkOWHoOS4quaVsOWtl++8m+acgOWwj+WAvO+8m+acgOWkp+WAvFxucmFuZG9tX251bWJlciA9IHJ1bmlmKDEsIDEsIDEwMClcblxuIyDlsIblsI/mlbDovazmiJDmlbTmlbDvvIzmlrnkvr/njJzmtYsgXG4jIGNlaWxpbmcoKSDmg7PosaHmiJDlpKnoirHmnb/vvIzlsLHmmK/lkJHkuIrlj5bmlbTjgIJcbiMgMS4yIC0+IDI7ICAgICAgMy45OC0+NFxudGFyZ2V0X251bWJlciA9IGNlaWxpbmcocmFuZG9tX251bWJlcilcblxuIyDpgJrov4flvqrnjq/mnaXliKTmlq3mmK/lkKbnjJzkuK3kuobmlbDlrZdcbmd1ZXNzX251bWJlciA9IDBcbndoaWxlKFRSVUUpIHtcbiAgIyDmm7TmlrDnjJzmtYvnmoTmrKHmlbBcbiAgZ3Vlc3NfbnVtYmVyID0gZ3Vlc3NfbnVtYmVyICsgMTtcbiAgIyDku47mjqfliLblj7DovpPlhaXnjJzmtYvnmoTmlbDmja5cbiAgbnVtYmVyID0gcmVhZGxpbmUoXFzor7fovpPlhaXmgqjnjJzmtYvnmoTmlbDlrZfvvIgxLTEwMOS7peWGheWTpu+8iVxcKVxuICAjIOaOp+WItuWPsOi+k+WFpeeahOaVsOaNruaYr2NoYXJhY3Rlcuexu+Wei+eahO+8jOaIkeS7rOWFiOi9rOaIkGludGVnZXLmlbTmlbDmlbDlgLznsbvlnotcbiAgbnVtYmVyID0gYXMuaW50ZWdlcihudW1iZXIpXG4gICMg5Yik5pat54yc5rWL55qE5pWw5a2X5ZKM55uu5qCH5pWw5a2X55qE5aSn5bCP77yM5pa55L6/6LCD5pW05LiL5LiA5qyh54yc5rWL55qE6IyD5Zu0XG4gIGlmKG51bWJlciA9PSB0YXJnZXRfbnVtYmVyKSB7XG4gICAgcHJpbnQoXFzmga3llpzmgqjnjJzlr7nllaZcXClcbiAgICBicmVha1xuICB9ZWxzZSBpZih0YXJnZXRfbnVtYmVyID4gbnVtYmVyKSB7XG4gICAgcHJpbnQoXFzmgqjnjJznmoTmlbDlrZflgY/lsI/vvIzor5XnnYDloavkuIDkuKrlpKfngrnnmoTmlbDlkKdcXClcbiAgfWVsc2Uge1xuICAgIHByaW50KFxc5oKo54yc5rWL55qE5pWw5a2X5YGP5aSn77yM6K+V552A5aGr5LiA5Liq5bCP54K555qE5pWw5ZCnXFwpXG4gIH1cbn1cbiMg5omT5Y2w5oC75YWx54yc5rWL5LqG5Yeg5qyhXG5wcmludChndWVzc19udW1iZXIpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r # 随机生成一个 1-100内的数字， # runif(n, min, max) 参数的意思分别是，生成几个数字；最小值；最大值 random_number = runif(1, 1, 100)</p>
+</div>
+<div id="将小数转成整数方便猜测" class="section level1">
+<h1>将小数转成整数，方便猜测</h1>
+</div>
+<div id="ceiling-想象成天花板就是向上取整" class="section level1">
+<h1>ceiling() 想象成天花板，就是向上取整。</h1>
+</div>
+<div id="section" class="section level1">
+<h1>1.2 -&gt; 2; 3.98-&gt;4</h1>
+<p>target_number = ceiling(random_number)</p>
+</div>
+<div id="通过循环来判断是否猜中了数字" class="section level1">
+<h1>通过循环来判断是否猜中了数字</h1>
+<p>guess_number = 0 while(TRUE) { # 更新猜测的次数 guess_number = guess_number + 1; # 从控制台输入猜测的数据 number = readline(（1-100以内哦）) # 控制台输入的数据是character类型的，我们先转成integer整数数值类型 number = as.integer(number) # 判断猜测的数字和目标数字的大小，方便调整下一次猜测的范围 if(number == target_number) { print() break }else if(target_number &gt; number) { print(，试着填一个大点的数吧) }else { print(，试着填一个小点的数吧) } } # 打印总共猜测了几次 print(guess_number)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1809,9 +1797,48 @@ print(guess_number)</code></pre>
 [1] 8
 &gt; </code></pre>
 <p>我一共猜了8次才猜对，试试看你的记录吧😜</p>
+<div id="矩阵与其转置相乘" class="section level3">
+<h3>矩阵与其转置相乘</h3>
+<p>这个是复习内容，复习前面 <strong>算术运算符</strong>的知识点。</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YSA9IGMoMSwgMiwgMywgNCwgNSwgNilcbm0gPSBtYXRyaXgoZGF0YSwgbnJvdyA9IDIsIGJ5cm93ID0gVFJVRSlcblxucHJpbnQobSlcbmBgYCJ9 -->
+<pre class="r"><code>data = c(1, 2, 3, 4, 5, 6)
+m = matrix(data, nrow = 2, byrow = TRUE)
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAi57uD5omL5bCP56S65L6LIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgrlrablrozkuobov5nkuYjlhpnkuKrmpoLlv7XmgKfnmoTkuJzopb/vvIzku4rlpKnlkrHmnaXlhpnngrnmnInmhI/mgJ3nmoTkuJzopb/jgILlhpnkuKrnjJzmlbDlrZfnmoTlsI/muLjmiI/mgI7kuYjmoLfvvJ/muLjmiI/op4TliJnlpoLkuIvvvJoKCumaj+acuuS6p+eUn+S4gOS4qjEtMTAw5Lul5YaF55qE5pW05pWw77yM54S25ZCO5Y6754yc6L+Z5Liq5pWw5a2X5piv5Yeg77yM55yL55yL6LCB55So55qE5qyh5pWw5bCR44CCCgpgYGB7cn0KIyDpmo/mnLrnlJ/miJDkuIDkuKogMS0xMDDlhoXnmoTmlbDlrZfvvIwKIyBydW5pZihuLCBtaW4sIG1heCkg5Y+C5pWw55qE5oSP5oCd5YiG5Yir5piv77yM55Sf5oiQ5Yeg5Liq5pWw5a2X77yb5pyA5bCP5YC877yb5pyA5aSn5YC8CnJhbmRvbV9udW1iZXIgPSBydW5pZigxLCAxLCAxMDApCgojIOWwhuWwj+aVsOi9rOaIkOaVtOaVsO+8jOaWueS+v+eMnOa1iyAKIyBjZWlsaW5nKCkg5oOz6LGh5oiQ5aSp6Iqx5p2/77yM5bCx5piv5ZCR5LiK5Y+W5pW044CCCiMgMS4yIC0+IDI7ICAgICAgMy45OC0+NAp0YXJnZXRfbnVtYmVyID0gY2VpbGluZyhyYW5kb21fbnVtYmVyKQoKIyDpgJrov4flvqrnjq/mnaXliKTmlq3mmK/lkKbnjJzkuK3kuobmlbDlrZcKZ3Vlc3NfbnVtYmVyID0gMAp3aGlsZShUUlVFKSB7CiAgIyDmm7TmlrDnjJzmtYvnmoTmrKHmlbAKICBndWVzc19udW1iZXIgPSBndWVzc19udW1iZXIgKyAxOwogICMg5LuO5o6n5Yi25Y+w6L6T5YWl54yc5rWL55qE5pWw5o2uCiAgbnVtYmVyID0gcmVhZGxpbmUoIuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJIikKICAjIOaOp+WItuWPsOi+k+WFpeeahOaVsOaNruaYr2NoYXJhY3Rlcuexu+Wei+eahO+8jOaIkeS7rOWFiOi9rOaIkGludGVnZXLmlbTmlbDmlbDlgLznsbvlnosKICBudW1iZXIgPSBhcy5pbnRlZ2VyKG51bWJlcikKICAjIOWIpOaWreeMnOa1i+eahOaVsOWtl+WSjOebruagh+aVsOWtl+eahOWkp+Wwj++8jOaWueS+v+iwg+aVtOS4i+S4gOasoeeMnOa1i+eahOiMg+WbtAogIGlmKG51bWJlciA9PSB0YXJnZXRfbnVtYmVyKSB7CiAgICBwcmludCgi5oGt5Zac5oKo54yc5a+55ZWmIikKICAgIGJyZWFrCiAgfWVsc2UgaWYodGFyZ2V0X251bWJlciA+IG51bWJlcikgewogICAgcHJpbnQoIuaCqOeMnOeahOaVsOWtl+WBj+Wwj++8jOivleedgOWhq+S4gOS4quWkp+eCueeahOaVsOWQpyIpCiAgfWVsc2UgewogICAgcHJpbnQoIuaCqOeMnOa1i+eahOaVsOWtl+WBj+Wkp++8jOivleedgOWhq+S4gOS4quWwj+eCueeahOaVsOWQpyIpCiAgfQp9CiMg5omT5Y2w5oC75YWx54yc5rWL5LqG5Yeg5qyhCnByaW50KGd1ZXNzX251bWJlcikKYGBgCgoK54S25ZCO5oiR5Lus55yL5LiL55SoUlN0dWRpb+i/kOihjOeahOe7k+aenOWQp+OAggoKYGBgCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJNTAKWzFdICLmgqjnjJzmtYvnmoTmlbDlrZflgY/lpKfvvIzor5XnnYDloavkuIDkuKrlsI/ngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMjUKWzFdICLmgqjnjJznmoTmlbDlrZflgY/lsI/vvIzor5XnnYDloavkuIDkuKrlpKfngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMzUKWzFdICLmgqjnjJznmoTmlbDlrZflgY/lsI/vvIzor5XnnYDloavkuIDkuKrlpKfngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJNDUKWzFdICLmgqjnjJzmtYvnmoTmlbDlrZflgY/lpKfvvIzor5XnnYDloavkuIDkuKrlsI/ngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJNDAKWzFdICLmgqjnjJzmtYvnmoTmlbDlrZflgY/lpKfvvIzor5XnnYDloavkuIDkuKrlsI/ngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMzgKWzFdICLmgqjnjJzmtYvnmoTmlbDlrZflgY/lpKfvvIzor5XnnYDloavkuIDkuKrlsI/ngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMzYKWzFdICLmgqjnjJznmoTmlbDlrZflgY/lsI/vvIzor5XnnYDloavkuIDkuKrlpKfngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMzcKWzFdICLmga3llpzmgqjnjJzlr7nllaYiCj4gIyDmiZPljbDmgLvlhbHnjJzmtYvkuoblh6DmrKEKPiBwcmludChndWVzc19udW1iZXIpClsxXSA4Cj4gCmBgYAoK5oiR5LiA5YWx54yc5LqGOOasoeaJjeeMnOWvue+8jOivleivleeci+S9oOeahOiusOW9leWQp/CfmJwK</div>
+print(m)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXVxuWzEsXSAgICAxICAgIDIgICAgM1xuWzIsXSAgICA0ICAgIDUgICAgNlxuIn0= -->
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDmsYLnn6npmLXovaznva5cbnRtID0gdChtKVxucHJpbnQodG0pXG5gYGAifQ== -->
+<pre class="r"><code># 求矩阵转置
+tm = t(m)
+print(tm)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICA0XG5bMixdICAgIDIgICAgNVxuWzMsXSAgICAzICAgIDZcbiJ9 -->
+<pre><code>     [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyDnrpflh7rnu5PmnpxcbnJlc3VsdCA9IG0gJSolIHRtXG5wcmludChyZXN1bHQpXG5gYGAifQ== -->
+<pre class="r"><code># 算出结果
+result = m %*% tm
+print(result)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAxNCAgIDMyXG5bMixdICAgMzIgICA3N1xuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]   14   32
+[2,]   32   77</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+</div>
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi57uD5omL5bCP56S65L6LIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgoKIyMjIOeMnOaVsOWtl+Wwj+a4uOaIjwrlrablrozkuobov5nkuYjlhpnkuKrmpoLlv7XmgKfnmoTkuJzopb/vvIzku4rlpKnlkrHmnaXlhpnngrnmnInmhI/mgJ3nmoTkuJzopb/jgILlhpnkuKrnjJzmlbDlrZfnmoTlsI/muLjmiI/mgI7kuYjmoLfvvJ/muLjmiI/op4TliJnlpoLkuIvvvJoKCumaj+acuuS6p+eUn+S4gOS4qjEtMTAw5Lul5YaF55qE5pW05pWw77yM54S25ZCO5Y6754yc6L+Z5Liq5pWw5a2X5piv5Yeg77yM55yL55yL6LCB55So55qE5qyh5pWw5bCR44CCCgpgYGB7cn0KIyDpmo/mnLrnlJ/miJDkuIDkuKogMS0xMDDlhoXnmoTmlbDlrZfvvIwKIyBydW5pZihuLCBtaW4sIG1heCkg5Y+C5pWw55qE5oSP5oCd5YiG5Yir5piv77yM55Sf5oiQ5Yeg5Liq5pWw5a2X77yb5pyA5bCP5YC877yb5pyA5aSn5YC8CnJhbmRvbV9udW1iZXIgPSBydW5pZigxLCAxLCAxMDApCgojIOWwhuWwj+aVsOi9rOaIkOaVtOaVsO+8jOaWueS+v+eMnOa1iyAKIyBjZWlsaW5nKCkg5oOz6LGh5oiQ5aSp6Iqx5p2/77yM5bCx5piv5ZCR5LiK5Y+W5pW044CCCiMgMS4yIC0+IDI7ICAgICAgMy45OC0+NAp0YXJnZXRfbnVtYmVyID0gY2VpbGluZyhyYW5kb21fbnVtYmVyKQoKIyDpgJrov4flvqrnjq/mnaXliKTmlq3mmK/lkKbnjJzkuK3kuobmlbDlrZcKZ3Vlc3NfbnVtYmVyID0gMAp3aGlsZShUUlVFKSB7CiAgIyDmm7TmlrDnjJzmtYvnmoTmrKHmlbAKICBndWVzc19udW1iZXIgPSBndWVzc19udW1iZXIgKyAxOwogICMg5LuO5o6n5Yi25Y+w6L6T5YWl54yc5rWL55qE5pWw5o2uCiAgbnVtYmVyID0gcmVhZGxpbmUoIuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJIikKICAjIOaOp+WItuWPsOi+k+WFpeeahOaVsOaNruaYr2NoYXJhY3Rlcuexu+Wei+eahO+8jOaIkeS7rOWFiOi9rOaIkGludGVnZXLmlbTmlbDmlbDlgLznsbvlnosKICBudW1iZXIgPSBhcy5pbnRlZ2VyKG51bWJlcikKICAjIOWIpOaWreeMnOa1i+eahOaVsOWtl+WSjOebruagh+aVsOWtl+eahOWkp+Wwj++8jOaWueS+v+iwg+aVtOS4i+S4gOasoeeMnOa1i+eahOiMg+WbtAogIGlmKG51bWJlciA9PSB0YXJnZXRfbnVtYmVyKSB7CiAgICBwcmludCgi5oGt5Zac5oKo54yc5a+55ZWmIikKICAgIGJyZWFrCiAgfWVsc2UgaWYodGFyZ2V0X251bWJlciA+IG51bWJlcikgewogICAgcHJpbnQoIuaCqOeMnOeahOaVsOWtl+WBj+Wwj++8jOivleedgOWhq+S4gOS4quWkp+eCueeahOaVsOWQpyIpCiAgfWVsc2UgewogICAgcHJpbnQoIuaCqOeMnOa1i+eahOaVsOWtl+WBj+Wkp++8jOivleedgOWhq+S4gOS4quWwj+eCueeahOaVsOWQpyIpCiAgfQp9CiMg5omT5Y2w5oC75YWx54yc5rWL5LqG5Yeg5qyhCnByaW50KGd1ZXNzX251bWJlcikKYGBgCgoK54S25ZCO5oiR5Lus55yL5LiL55SoUlN0dWRpb+i/kOihjOeahOe7k+aenOWQp+OAggoKYGBgCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJNTAKWzFdICLmgqjnjJzmtYvnmoTmlbDlrZflgY/lpKfvvIzor5XnnYDloavkuIDkuKrlsI/ngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMjUKWzFdICLmgqjnjJznmoTmlbDlrZflgY/lsI/vvIzor5XnnYDloavkuIDkuKrlpKfngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMzUKWzFdICLmgqjnjJznmoTmlbDlrZflgY/lsI/vvIzor5XnnYDloavkuIDkuKrlpKfngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJNDUKWzFdICLmgqjnjJzmtYvnmoTmlbDlrZflgY/lpKfvvIzor5XnnYDloavkuIDkuKrlsI/ngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJNDAKWzFdICLmgqjnjJzmtYvnmoTmlbDlrZflgY/lpKfvvIzor5XnnYDloavkuIDkuKrlsI/ngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMzgKWzFdICLmgqjnjJzmtYvnmoTmlbDlrZflgY/lpKfvvIzor5XnnYDloavkuIDkuKrlsI/ngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMzYKWzFdICLmgqjnjJznmoTmlbDlrZflgY/lsI/vvIzor5XnnYDloavkuIDkuKrlpKfngrnnmoTmlbDlkKciCuivt+i+k+WFpeaCqOeMnOa1i+eahOaVsOWtl++8iDEtMTAw5Lul5YaF5ZOm77yJMzcKWzFdICLmga3llpzmgqjnjJzlr7nllaYiCj4gIyDmiZPljbDmgLvlhbHnjJzmtYvkuoblh6DmrKEKPiBwcmludChndWVzc19udW1iZXIpClsxXSA4Cj4gCmBgYAoK5oiR5LiA5YWx54yc5LqGOOasoeaJjeeMnOWvue+8jOivleivleeci+S9oOeahOiusOW9leWQp/CfmJwKCgojIyMg55+p6Zi15LiO5YW26L2s572u55u45LmYCgrov5nkuKrmmK/lpI3kuaDlhoXlrrnvvIzlpI3kuaDliY3pnaIgKirnrpfmnK/ov5DnrpfnrKYqKueahOefpeivhueCueOAggoKYGBge3J9CmRhdGEgPSBjKDEsIDIsIDMsIDQsIDUsIDYpCm0gPSBtYXRyaXgoZGF0YSwgbnJvdyA9IDIsIGJ5cm93ID0gVFJVRSkKCnByaW50KG0pCiMg5rGC55+p6Zi16L2s572uCnRtID0gdChtKQpwcmludCh0bSkKCgojIOeul+WHuue7k+aenApyZXN1bHQgPSBtICUqJSB0bQpwcmludChyZXN1bHQpCmBgYAo=</div>
 
 
 
