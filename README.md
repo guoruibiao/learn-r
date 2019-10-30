@@ -9,7 +9,7 @@ R language learning notes.
 
 - [x] [0 写在前面](https://github.com/guoruibiao/learn-r/raw/master/0-写在前面.md)
 - [x] [1 环境安装](https://github.com/guoruibiao/learn-r/blob/master/1-chapter.Rmd)
-- [x] [2 基础语法](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
+- [x] [2 基础语法与数据类型](https://github.com/guoruibiao/learn-r/blob/master/2-chapter.Rmd)
 - [x] [3 运算符与流程控制](https://github.com/guoruibiao/learn-r/blob/master/3-chapter.Rmd)
 - [x] [4 函数与包](https://github.com/guoruibiao/learn-r/blob/master/4-chapter.Rmd)
 - [x] [5 练手小示例](https://github.com/guoruibiao/learn-r/blob/master/5-chapter.Rmd)
