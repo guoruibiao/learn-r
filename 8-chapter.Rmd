@@ -1,0 +1,15 @@
+---
+title: "拓展部分"
+output: html_notebook
+---
+
+写到这里，基本上R语言就算是一只脚迈入了它的大门了。
+
+这个系列写的有点随意，很多地方解释的也都不尽如人意，至少给我自己的感觉是这样的，所以咱还是贴一下 **课外拓展** 的内容，有兴趣的话可以看看别人是怎么讲R语言的😜
+
+- [有用的拓展内容](https://www.w3cschool.cn/r/r_useful_resources.html)
+- [易百R语言教程](https://www.yiibai.com/r/r_packages.html)
+- [知乎如何学习R语言](https://www.zhihu.com/question/21654166)
+- [慕课网视频教学R语言](https://www.imooc.com/learn/446)
+
+以上排名不分顺序，有更好的链接也可以联系我进行添加~
